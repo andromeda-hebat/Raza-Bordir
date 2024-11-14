@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Core;
+
 class Controller {
-    public ?Model model;
+    public ?Model $model;
 
     public function __construct() {
 
@@ -12,6 +14,6 @@ class Controller {
     }
 
     public function view(string $view, array $data = []): void {
-        require __DIR__ . '/../views/' . $view . '.php';
+        require __DIR__ . '/../views/' . $view .'.php';
     }
 }
