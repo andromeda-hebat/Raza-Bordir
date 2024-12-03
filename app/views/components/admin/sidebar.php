@@ -36,4 +36,4 @@
 
 
 <!-- Bootstrap Modal -->
-<?php include __DIR__ . '/../general/ask_logout_modal.php' ?>
+<?php include __DIR__ . '/../bs_modal/ask_logout_modal.php' ?>
