@@ -14,3 +14,4 @@ Router::add('POST', '/admin', AdminController::class, 'processLogin');
 Router::add('GET', '/dashboard', AdminController::class, 'showDashboard');
 Router::add('GET', '/kelola-pesanan', AdminController::class, 'showKelolaPesananPage');
 Router::add('GET', '/kelola-katalog', AdminController::class, 'showKelolaKatalogProduk');
+Router::add('GET', '/ulasan', AdminController::class, 'showUlasan');

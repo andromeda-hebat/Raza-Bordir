@@ -54,4 +54,13 @@ class AdminController extends Controller
         $this->view("pages/admin/kelola_katalog_produk");
         $this->view("templates/footer");
     }
+
+    public function showUlasan(): void
+    {
+        $this->view("templates/header", [
+            'title'=>"Ulasan"
+        ]);
+        $this->view("pages/admin/ulasan");
+        $this->view("templates/footer");
+    }
 }
