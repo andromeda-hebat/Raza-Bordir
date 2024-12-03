@@ -18,6 +18,22 @@ class Database
         self::$DB_PASSWORD = $_ENV['DB_PASSWORD'] ?? throw new \Exception('DB_PASSWORD not set');
     }
 
+    public static function getConnectionWithouDB(): \PDO
+    {
+        self::initialize();
+
+        $dsn = "sqlsrv:Server=" . self::$DB_SERVER;
+        
+        try {
+            $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
+            $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            throw new \Exception("Database connection failed: " . $e->getMessage());
+        }
+        
+        return $conn;
+    }
+
     public static function getConnection(): \PDO
     {
         if (self::$conn === null) {
