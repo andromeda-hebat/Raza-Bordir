@@ -63,4 +63,13 @@ class AdminController extends Controller
         $this->view("pages/admin/ulasan");
         $this->view("templates/footer");
     }
+
+    public function showTambahProduk(): void
+    {
+        $this->view("templates/header", [
+            'title'=>"Tambah Produk"
+        ]);
+        $this->view("pages/admin/tambah_produk");
+        $this->view("templates/footer");
+    }
 }

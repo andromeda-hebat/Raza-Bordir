@@ -9,7 +9,7 @@
         <a href="/kelola-pesanan" class="sidebar-nav nav-link w-100 ps-5 text-black">
             Kelola Pesanan
         </a>
-        <a href="/kelola-katalog" class="sidebar-nav nav-link w-100 ps-5 text-black">
+        <a href="/katalog-produk" class="sidebar-nav nav-link w-100 ps-5 text-black">
             Kelola Katalog
         </a>
         <a href="/ulasan" class="sidebar-nav nav-link w-100 ps-5 text-black">
