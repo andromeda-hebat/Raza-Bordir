@@ -40,9 +40,18 @@ class AdminController extends Controller
     public function showKelolaPesananPage(): void
     {
         $this->view("templates/header", [
-            'title'=>"Dashboard"
+            'title'=>"Kelola Pesanan"
         ]);
         $this->view("pages/admin/kelola_pesanan");
+        $this->view("templates/footer");
+    }
+
+    public function showKelolaKatalogProduk(): void
+    {
+        $this->view("templates/header", [
+            'title'=>"Kelola Katalog Produk"
+        ]);
+        $this->view("pages/admin/kelola_katalog_produk");
         $this->view("templates/footer");
     }
 }
