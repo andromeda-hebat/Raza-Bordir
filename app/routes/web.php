@@ -11,3 +11,4 @@ Router::add('GET', '/', HomeController::class, 'index');
 // Admin
 Router::add('GET', '/admin', AdminController::class, 'showLoginPage');
 Router::add('POST', '/admin', AdminController::class, 'processLogin');
+Router::add('GET', '/dashboard', AdminController::class, 'showDashboard');

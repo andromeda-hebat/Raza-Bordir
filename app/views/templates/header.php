@@ -18,6 +18,10 @@
         * {
             font-family: "Alegreya Sans SC", serif;
         }
+
+        :root {
+            --ivory-cream-color: #EAE1D0;
+        }
     </style>
 </head>
 

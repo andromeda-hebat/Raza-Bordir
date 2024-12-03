@@ -27,4 +27,13 @@ class AdminController extends Controller
             }
         }
     }
+
+    public function showDashboard(): void
+    {
+        $this->view("templates/header", [
+            'title'=>"Dashboard"
+        ]);
+        $this->view("pages/admin/dashboard");
+        $this->view("templates/footer");
+    }
 }
