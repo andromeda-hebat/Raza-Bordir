@@ -36,4 +36,13 @@ class AdminController extends Controller
         $this->view("pages/admin/dashboard");
         $this->view("templates/footer");
     }
+
+    public function showKelolaPesananPage(): void
+    {
+        $this->view("templates/header", [
+            'title'=>"Dashboard"
+        ]);
+        $this->view("pages/admin/kelola_pesanan");
+        $this->view("templates/footer");
+    }
 }

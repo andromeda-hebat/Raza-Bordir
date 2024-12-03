@@ -12,3 +12,4 @@ Router::add('GET', '/', HomeController::class, 'index');
 Router::add('GET', '/admin', AdminController::class, 'showLoginPage');
 Router::add('POST', '/admin', AdminController::class, 'processLogin');
 Router::add('GET', '/dashboard', AdminController::class, 'showDashboard');
+Router::add('GET', '/kelola-pesanan', AdminController::class, 'showKelolaPesananPage');
