@@ -1,6 +1,4 @@
-
-
-<?php include __DIR__ . '/components/navbar.php' ?>
+<?php include __DIR__ . '/../components/navbar.php' ?>
 <main>
     <!-- Halaman 1 -->
     <section class="vh-100 d-flex align-items-end"

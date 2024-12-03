@@ -2,38 +2,53 @@
 
 namespace App\Core;
 
-require_once __DIR__ . '/../config/config.php';
-
-use PDO;
-use PDOStatement;
-use PDOException;
-
 class Database
 {
-    private string $DB_SERVER = DB_SERVER;
-    private string $DB_NAME = DB_NAME;
-    private string $DB_USER = DB_USER;
-    private string $DB_PASSWORD = DB_PASSWORD;
-    private ?PDO $conn = null;
+    private static string $DB_SERVER;
+    private static string $DB_NAME;
+    private static string $DB_USER;
+    private static string $DB_PASSWORD;
+    private static ?\PDO $conn = null;
 
-    public function __construct()
+    private static function initialize(): void
     {
-        $dsn = "sqlsrv:Server=$this->DB_SERVER;Database=$this->DB_NAME";
+        self::$DB_SERVER = $_ENV['DB_HOST'] ?? throw new \Exception('DB_HOST not set');
+        self::$DB_NAME = $_ENV['DB_NAME'] ?? throw new \Exception('DB_NAME not set');
+        self::$DB_USER = $_ENV['DB_USER'] ?? throw new \Exception('DB_USER not set');
+        self::$DB_PASSWORD = $_ENV['DB_PASSWORD'] ?? throw new \Exception('DB_PASSWORD not set');
+    }
 
+    public static function getConnectionWithouDB(): \PDO
+    {
+        self::initialize();
+
+        $dsn = "sqlsrv:Server=" . self::$DB_SERVER;
+        
         try {
-            $this->conn = new PDO($dsn, $this->DB_USER, $this->DB_PASSWORD);
-        } catch (PDOException $e) {
-            echo "Error PDO connection: " . $e->getMessage();
+            $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
+            $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            throw new \Exception("Database connection failed: " . $e->getMessage());
         }
+        
+        return $conn;
     }
 
-    public function query(string $query): PDOStatement
+    public static function getConnection(): \PDO
     {
-        return $this->conn->query($query);
-    }
+        if (self::$conn === null) {
+            self::initialize();
+            
+            $dsn = "sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME;
 
-    public function prepareQuery(string $query): PDOStatement
-    {
-        return $this->conn->prepare($query);
+            try {
+                self::$conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
+                self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            } catch (\PDOException $e) {
+                throw new \Exception("Database connection failed: " . $e->getMessage());
+            }
+        }
+
+        return self::$conn;
     }
 }
