@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Core\Router;
-use App\Controllers\{Home};
+use App\Controllers\HomeController;
 
 
-Router::add('GET', '/', Home::class, 'index');
+Router::add('GET', '/', HomeController::class, 'index');
