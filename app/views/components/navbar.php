@@ -17,13 +17,17 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-                <ul class="list-unstyled">
+            <div class="offcanvas-body p-0">
+                <ul class="list-unstyled p-4">
                     <li><a href="#" class="nav-link">Beranda</a></li>
                     <li><a href="#" class="nav-link">Produk</a></li>
                     <li><a href="#" class="nav-link">Promo</a></li>
                     <li><a href="#" class="nav-link">Tentang</a></li>
                 </ul>
+                <div class="p-4 w-100 position-absolute bottom-0" style="background-color: #EAE1D0; height: 100px">
+                    <a href="#" class="text-decoration-none text-black">Hubungi Kami</a>
+                </div>
             </div>
         </div>
+    </div>
 </nav>
