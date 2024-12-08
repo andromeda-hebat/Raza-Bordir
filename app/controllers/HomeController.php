@@ -10,7 +10,7 @@ class HomeController extends Controller {
         $this->view("templates/header", [
             'title'=>"Raza Bordir"
         ]);
-        $this->view("pages/index");
+        $this->view("pages/general/index");
         $this->view("templates/footer");
     }
 }
