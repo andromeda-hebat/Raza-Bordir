@@ -59,4 +59,13 @@ class CustomerController extends Controller
         $this->view("pages/customer/formulir_pemesanan");
         $this->view("templates/footer");
     }
+
+    public function processOrder(): void
+    {
+        http_response_code(200);
+        echo json_encode([
+            "status" => "success",
+            "message" => "Form successfully send to server"
+        ]);
+    }
 }
