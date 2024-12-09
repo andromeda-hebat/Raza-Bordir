@@ -1,6 +1,11 @@
-<?php include __DIR__ . '/../../components/customer/navbar.php' ?>
+<?php require __DIR__ . '/../../components/customer/navbar.php' ?>
+
+
+
+
+
+<?= Navbar() ?>
 <main>
-    <!-- Halaman 1 -->
     <section class="min-vh-100 d-flex align-items-end"
         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/img/mesin-bordir.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
         <div class="container text-md-start m-5" style="color: #FEFFD2;">
