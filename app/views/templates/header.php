@@ -35,36 +35,36 @@
         }
 
         .product-card {
-                aspect-ratio: 1/1;
-                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-                max-height: 400px;
-                min-height: 150px;
-                width: 100%;
-                overflow: hidden;
-            }
+            aspect-ratio: 1/1;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            max-height: 400px;
+            min-height: 150px;
+            width: 100%;
+            overflow: hidden;
+        }
 
-            @media (max-width: 768px) {
-                .product-card {
-                    max-height: 300px;
-                }
+        @media (max-width: 768px) {
+            .product-card {
+                max-height: 300px;
             }
+        }
 
-            @media (max-width: 576px) {
-                .product-card {
-                    max-height: 250px;
-                }
+        @media (max-width: 576px) {
+            .product-card {
+                max-height: 250px;
             }
+        }
 
-            .product-img {
-                object-position: center;
-                width: 100%;
-                height: auto;
-                max-width: 100%;
-            }
+        .product-img {
+            object-position: center;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
 
-            .price-tag {
-                font-size: 0.75rem;
-            }
+        .price-tag {
+            font-size: 0.75rem;
+        }
     </style>
 </head>
 
