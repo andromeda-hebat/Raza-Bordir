@@ -22,6 +22,10 @@
         :root {
             --ivory-cream-color: #EAE1D0;
         }
+
+        main {
+            background-color: #FAF9F6;
+        }
     </style>
 </head>
 

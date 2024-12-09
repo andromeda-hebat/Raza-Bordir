@@ -3,10 +3,16 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Core\Router;
-use App\Controllers\{HomeController, AdminController};
+use App\Controllers\{CustomerController, AdminController};
 
 
-Router::add('GET', '/', HomeController::class, 'index');
+Router::add('GET', '/', CustomerController::class, 'index');
+Router::add('GET', '/produk', CustomerController::class, 'showProduct');
+Router::add('GET', '/pesan', CustomerController::class, 'clientOrder');
+Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'showOrderInstructions');
+Router::add('GET', '/detail-produk', CustomerController::class, 'showDetailProduct');
+Router::add('GET', '/formulir-pemesanan', CustomerController::class, 'showOrderForm');
+
 
 // Admin
 Router::add('GET', '/admin', AdminController::class, 'showLoginPage');
