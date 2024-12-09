@@ -1,4 +1,10 @@
-<?php include __DIR__ . '/../../components/customer/navbar.php' ?>
+<?php require __DIR__ . '/../../components/customer/navbar.php' ?>
+
+
+
+
+
+<?= Navbar() ?>
 <main class="mt-5 p-3">
     <section class="min-vh-100">
         <h2>Petunjuk Pemesanan</h2>

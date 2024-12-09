@@ -1,5 +1,9 @@
-<nav class=" navbar navbar-expand-lg d-flex align-items-between py-1 px-2 fixed-top" style="background-color: #EAE1D0CC">
+<?php
 
+function Navbar(): string
+{
+    return <<<HTML
+    <nav class=" navbar navbar-expand-lg d-flex align-items-between py-1 px-2 fixed-top" style="background-color: #EAE1D0CC">
     <div class="container-fluid">
         <div class="d-md-none">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav"
@@ -33,10 +37,10 @@
             </ul>
         </div>
     </div>
-</nav>
+    </nav>
 
-<!-- Sliding offcanvas for mobile -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
+    <!-- Sliding offcanvas for mobile -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="mobileNavLabel">Menu</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -53,4 +57,6 @@
             <a href="#" class="text-decoration-none text-black">Hubungi Kami</a>
         </div>
     </div>
-</div>
+    </div>
+    HTML;
+}

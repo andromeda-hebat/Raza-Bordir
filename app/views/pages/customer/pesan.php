@@ -1,4 +1,10 @@
-<?php include __DIR__ . '/../../components/customer/navbar.php' ?>
+<?php require __DIR__ . '/../../components/customer/navbar.php' ?>
+
+
+
+
+
+<?= Navbar() ?>
 <main class="mt-5 p-3">
     <section id="media-selection" class="min-vh-100">
         <div class="card flex-row align-items-center border border-info text-primary"
