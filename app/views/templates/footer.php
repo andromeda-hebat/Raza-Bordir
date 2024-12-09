@@ -1,3 +1,4 @@
+<?php if (!isset($_SESSION['username'])): ?>
 <footer class="p-5">
     <h2>Layanan Pelanggan</h2>
     <p>Senin-Sabtu: 08.00 - 17.00 WIB</p>
@@ -49,6 +50,7 @@
 
     <p class="text-center mt-5">© 2024 - Andromeda</p>
 </footer>
+<?php endif; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"

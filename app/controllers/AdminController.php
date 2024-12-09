@@ -19,6 +19,7 @@ class AdminController extends Controller
     {
         if (isset($_POST['username']) && isset($_POST['password'])) {
             if ($_POST['username'] == "Raza" && $_POST['password'] == "bordir") {
+                $_SESSION['username'] = $_POST['username'];
                 header("Location: /dashboard");
                 return;
             } else {
