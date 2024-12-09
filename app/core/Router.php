@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Controllers\AuthController;
+
 class Router
 {
     public static array $routes = [];
@@ -45,14 +47,12 @@ class Router
         }
 
         if ($is_path_found && !$is_method_found) {
-            http_response_code(405);
-            echo "METHOD NOT ALLOWED!";
+            (new AuthController)->sendPageMethodNotAllowed();
             return;
         }
 
         if (!$is_path_found) {
-            http_response_code(404);
-            echo "CONTROLLER NOT FOUND!";
+            (new AuthController)->sendPageNotFound();
             return;
         }
     }
