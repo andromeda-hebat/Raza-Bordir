@@ -13,7 +13,7 @@
     <?= Sidebar() ?>
     <div class="position-top w-100" style="margin-left: 40vh;">
         <?= Topbar() ?>
-        <main style="height: 100vh; margin-top:10vh;">
+        <main style="min-height:100vh; margin-top:10vh;">
             <div class="p-5">
                 <div>
                     <h1>Kategori Produk Terlaris</h1>
