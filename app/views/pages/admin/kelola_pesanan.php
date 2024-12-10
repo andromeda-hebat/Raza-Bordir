@@ -16,7 +16,7 @@
         <main style="height: 90vh;">
             <div class="px-5">
                 <h2 class="pt-4">Kelola Pesanan</h2>
-        
+
                 <div class="row mx-0 bg-white mt-5">
                     <div class="col border-end border-start border-black">Semua</div>
                     <div class="col border-end border-black">Belum dibayar</div>
@@ -24,7 +24,7 @@
                     <div class="col border-end border-black">Proses dibayar</div>
                     <div class="col border-end border-black">Selesai dibayar</div>
                 </div>
-        
+
                 <table class="table mt-5 border-top border-black">
                     <thead>
                         <tr>

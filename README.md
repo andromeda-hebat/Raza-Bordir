@@ -1,6 +1,5 @@
 # Sistem Informasi UMKM "Raza Bordir"
 
-
 <div align="center">
     <img src="docs/assets/raza-bordir-logo.png" style="width: 50%;">
 </div>

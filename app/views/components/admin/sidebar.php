@@ -8,7 +8,7 @@ function Sidebar(): string
     $ask_logout_modal = AskLogutModal();
     return <<<HTML
     <div class="d-flex flex-column align-items-center border-end justify-content-center"
-    style="background-color: #FFFF; width: 300px; height: 100vh; padding-top: 20px;">
+    style="background-color: white; width: 40vh; height: 100vh; padding-top: 20px;">
 
     <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center text-start">
@@ -33,7 +33,7 @@ function Sidebar(): string
     </nav>
 
     <!-- Tombol Keluar -->
-    <div class="mt-auto w-100 mb-4 d-flex justify-content-center" style="">
+    <div class="mt-auto w-100 mb-4 d-flex justify-content-center">
         <button type="button" class="sidebar-nav nav-link w-100 ps-5 p-3 d-flex text-start" data-bs-toggle="modal"
             data-bs-target="#modalConfirmationLogout">
             <svg class="me-2 text-black" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
