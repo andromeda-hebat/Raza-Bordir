@@ -68,4 +68,13 @@ class CustomerController extends Controller
             "message" => "Form successfully send to server"
         ]);
     }
+
+    public function showAboutUs(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Tentang kami"
+        ]);
+        $this->view("pages/customer/tentang");
+        $this->view("templates/footer");
+    }
 }

@@ -32,7 +32,7 @@ function Navbar(): string
                     <a class="nav-link" href="#">Promo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tentang</a>
+                    <a class="nav-link" href="/tentang">Tentang</a>
                 </li>
             </ul>
         </div>
@@ -51,7 +51,7 @@ function Navbar(): string
             <li><a href="/produk" class="nav-link my-2">Produk</a></li>
             <li><a href="/pesan" class="nav-link my-2">Pesan</a></li>
             <li><a href="#" class="nav-link my-2">Promo</a></li>
-            <li><a href="#" class="nav-link my-2">Tentang</a></li>
+            <li><a href="/tentang" class="nav-link my-2">Tentang</a></li>
         </ul>
         <div class="p-4 w-100 position-absolute bottom-0" style="background-color: #EAE1D0; height: 100px">
             <a href="#" class="text-decoration-none text-black">Hubungi Kami</a>

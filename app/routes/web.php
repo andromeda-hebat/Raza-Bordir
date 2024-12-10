@@ -13,6 +13,7 @@ Router::add('GET', '/pesan', CustomerController::class, 'clientOrder');
 Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'showOrderInstructions');
 Router::add('GET', '/formulir-pemesanan', CustomerController::class, 'showOrderForm');
 Router::add('POST', '/customer-order', CustomerController::class, '');
+Router::add('GET', '/tentang', CustomerController::class, 'showAboutUs');
 
 
 // Admin
