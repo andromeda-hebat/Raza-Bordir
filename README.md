@@ -32,7 +32,7 @@ Tujuan utama dari proyek ini adalah untuk menggantikan sistem manual yang selama
 
 Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
 
-[![Pedoman developer](https://img.shields.io/badge/⚒️%20Pedoman%20Developer-4CAF50?style=for-the-badge&logo=check-circle&logoColor=white)](docs/guides/dev/) [![Pedoman Umum](https://img.shields.io/badge/🧸%20Pedoman%20Umum-0078D4?style=for-the-badge&logo=code&logoColor=white)](docs/guides/general/)
+[![Pedoman developer](https://img.shields.io/badge/⚒️%20Pedoman%20Developer-4CAF50?style=for-the-badge&logo=check-circle&logoColor=white)](docs/guides/dev/) [![Pedoman Umum](https://img.shields.io/badge/🧸%20Pedoman%20Umum-0078D4?style=for-the-badge&logo=code&logoColor=white)](docs/guides/general/) [![Pedoman Umum](https://img.shields.io/badge/🖥️%20Pedoman%20Admin-red?style=for-the-badge&logo=code&logoColor=white)](docs/guides/admin/)
 
 ---
 
