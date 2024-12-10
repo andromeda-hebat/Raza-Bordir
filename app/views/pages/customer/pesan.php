@@ -88,19 +88,6 @@
 
     <section id="design-input" class="min-vh-100 position-relative">
         <h2 class="mt-3">Sertakan gambar yang ingin anda bordir</h2>
-        <div class="card p-3 d-flex flex-row border-info text-primary"
-            style="background-color: rgba(116, 182, 222, 0.23) !important">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6 m-1" style="width: 50px;">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-            </svg>
-            <div>
-                <p class="my-0">Lewati proses ini jika anda tidak ingin memberikan referensi desain</p>
-            </div>
-        </div>
-
-
         <div class="container mt-5">
             <style>
                 .drop-area {
@@ -149,9 +136,7 @@
         <p class="text-center my-3">atau</p>
 
         <textarea name="notes_request" id="notes-request"
-            placeholder="Berikan gambaran rancangan desain yang akan dibuat" style="w-100">
-
-        </textarea>
+            placeholder="Berikan deskripsi rancangan desain yang akan dibuat" class="w-100" style="resize: none;"></textarea>
 
         <div class="position-absolute bottom-0 end-0">
             <button class="back-btn button">Kembali</button>
