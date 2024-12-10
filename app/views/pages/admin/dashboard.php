@@ -1,7 +1,18 @@
+<?php require_once __DIR__ . '/../../components/admin/sidebar.php' ?>
+<?php require_once __DIR__ . '/../../components/admin/topbar.php' ?>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <div class="d-flex">
-    <?php include __DIR__ . '/../../components/admin/sidebar.php' ?>
+    <?= Sidebar() ?>
     <div class="position-top w-100">
-        <?php include __DIR__ . '/../../components/admin/topbar.php' ?>
+        <?= Topbar() ?>
         <main style="height: 90vh;">
             <div class="p-5">
                 <div>
@@ -24,7 +35,6 @@
                     <div class="border border-black w-100" style="height: 400px"></div>
                 </div>
             </div>
-
         </main>
     </div>
 </div>
