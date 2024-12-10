@@ -1,7 +1,11 @@
+<?php require_once __DIR__ . '/../../components/admin/sidebar.php' ?>
+<?php require_once __DIR__ . '/../../components/admin/topbar.php' ?>
+
+
 <div class="d-flex">
-    <?php include __DIR__ . '/../../components/admin/sidebar.php' ?>
+    <?= Sidebar() ?>
     <div class="w-100" style="margin-left: 40vh;">
-        <?php include __DIR__ . '/../../components/admin/topbar.php' ?>
+        <?= Topbar() ?>>
         <main style="height: 100vh; margin-top:10vh;">
             <div class="p-5">
                 <h1>Ulasan</h1>

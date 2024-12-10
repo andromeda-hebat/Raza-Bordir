@@ -11,9 +11,9 @@
 
 <div class="d-flex">
     <?= Sidebar() ?>
-    <div class="position-top w-100">
-    <?= Topbar() ?>
-        <main style="height: 90vh;">
+    <div class="position-top w-100" style="margin-left:40vh;">
+        <?= Topbar() ?>
+        <main style="min-height: 100vh; margin-top:10vh;">
             <div class="px-5">
                 <h2 class="pt-4">Kelola Pesanan</h2>
 

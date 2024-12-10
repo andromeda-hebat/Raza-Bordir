@@ -12,15 +12,10 @@ function Topbar(): string
 
             </div>
         </div>
-        <div class="pe-5 d-flex align-items-center">
+        <div class="pe-3 d-flex align-items-center">
             <h6 class="my-0 me-3">Admin</h6>
             <img src="/assets/img/admin.jpg" alt="" style="width: 5vh;">
         </div>
     </div>
-    <div class="pe-3 d-flex align-items-center">
-        <h6 class="my-0 me-3">Admin</h6>
-        <img src="/assets/img/admin.jpg" alt="" style="width: 5vh;">
-    </div>
-</div>
     HTML;
 }
