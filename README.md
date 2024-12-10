@@ -27,4 +27,24 @@ Tujuan utama dari proyek ini adalah untuk menggantikan sistem manual yang selama
 - Meningkatkan efisiensi operasional usaha mikro kecil dengan sistem yang terintegrasi dan mudah digunakan.
 
 ---
+
+## Dokumentasi Proyek
+
+Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
+
+[![Pedoman developer](https://img.shields.io/badge/⚒️%20Pedoman%20Developer-4CAF50?style=for-the-badge&logo=check-circle&logoColor=white)](https://github.com/andromeda-hebat/Raza-Bordir/tree/main/docs/guides/dev) [![Pedoman Umum](https://img.shields.io/badge/🧸%20Pedoman%20Umum-0078D4?style=for-the-badge&logo=code&logoColor=white)](https://github.com/andromeda-hebat/Raza-Bordir/tree/main/docs/guides/general)
+
+---
+
+## Kontributor
+
+| Nama | GitHub | Peran |
+|--|--| -- |
+| Farrel Augusta Dinata | [@FarrelAD](https://github.com/FarrelAD) | Frontend & Backend developer |
+| Afifah Khoirunnisa | [@afifahnisa17](https://github.com/afifahnisa17) | Database designer |
+| Dewita Anggraini | [@DewitaA12](https://github.com/DewitaA12) | UI/UX designer |
+| Fajar Aditya Nugraha | [@FajarAdityaNugraha](https://github.com/FajarAdityaNugraha) | UI/UX designer |
+| Stevan Zaky Setyanto | [@vanstevanzaky](https://github.com/vanstevanzaky) | Frontend developer |
+
+---
 ---
