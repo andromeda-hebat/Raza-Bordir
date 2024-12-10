@@ -59,4 +59,31 @@ class CustomerController extends Controller
         $this->view("pages/customer/formulir_pemesanan");
         $this->view("templates/footer");
     }
+
+    public function processOrder(): void
+    {
+        http_response_code(200);
+        echo json_encode([
+            "status" => "success",
+            "message" => "Form successfully send to server"
+        ]);
+    }
+
+    public function showAboutUs(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Tentang kami"
+        ]);
+        $this->view("pages/customer/tentang");
+        $this->view("templates/footer");
+    }
+
+    public function showContact(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Kontak"
+        ]);
+        $this->view("pages/customer/kontak");
+        $this->view("templates/footer");
+    }
 }

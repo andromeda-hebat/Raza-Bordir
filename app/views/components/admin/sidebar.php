@@ -1,5 +1,14 @@
-<div class="d-flex flex-column align-items-center border-end justify-content-center position-fixed"
-    style="background-color: #FFFF; width: 40vh; height: 100vh; padding-top: 20px;">
+<?php
+
+require_once __DIR__ . '/../bs_modal/ask_logout_modal.php';
+
+
+function Sidebar(): string
+{
+    $ask_logout_modal = AskLogutModal();
+    return <<<HTML
+    <div class="d-flex flex-column align-items-center border-end justify-content-center"
+    style="background-color: white; width: 40vh; height: 100vh; padding-top: 20px;">
 
     <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center text-start">
@@ -18,6 +27,9 @@
         <a href="/ulasan" class="sidebar-nav nav-link w-100 ps-5 text-black">
             Ulasan
         </a>
+        <a href="/penjualan" class="sidebar-nav nav-link w-100 ps-5 text-black">
+            Penjualan dan pendapatan
+        </a>
     </nav>
 
     <!-- Tombol Keluar -->
@@ -30,13 +42,11 @@
                     fill="#E4EEFF" />
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 12V1.5H12.75V12H11.25Z" fill="#E4EEFF" />
             </svg>
-            Keluar
-        </button>
+                Keluar
+            </button>
+        </div>
     </div>
-</div>
 
-
-
-
-<!-- Bootstrap Modal -->
-<?php include __DIR__ . '/../bs_modal/ask_logout_modal.php' ?>
+    {$ask_logout_modal}
+    HTML;
+}
