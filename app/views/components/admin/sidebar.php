@@ -1,8 +1,11 @@
 <div class="d-flex flex-column align-items-center border-end justify-content-center"
-    style="background-color: #F9F8F5; width: 250px; height: 100vh; padding-top: 20px;">
+    style="background-color: #FFFF; width: 300px; height: 100vh; padding-top: 20px;">
 
     <!-- Tautan Navigasi -->
     <nav class="nav w-100 d-flex justify-content-center text-start">
+        <h2>
+            RAZA BORDIR
+        </h2>
         <a href="/dashboard" class="sidebar-nav nav-link w-100 ps-5 text-black">
             Dashboard
         </a>
