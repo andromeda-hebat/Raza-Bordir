@@ -14,6 +14,7 @@ Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'showOrderIn
 Router::add('GET', '/formulir-pemesanan', CustomerController::class, 'showOrderForm');
 Router::add('POST', '/customer-order', CustomerController::class, '');
 Router::add('GET', '/tentang', CustomerController::class, 'showAboutUs');
+Router::add('GET', '/kontak', CustomerController::class, 'showContact');
 
 
 // Admin

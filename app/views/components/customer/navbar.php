@@ -54,7 +54,7 @@ function Navbar(): string
             <li><a href="/tentang" class="nav-link my-2">Tentang</a></li>
         </ul>
         <div class="p-4 w-100 position-absolute bottom-0" style="background-color: #EAE1D0; height: 100px">
-            <a href="#" class="text-decoration-none text-black">Hubungi Kami</a>
+            <a href="/kontak" class="text-decoration-none text-black">Hubungi Kami</a>
         </div>
     </div>
     </div>

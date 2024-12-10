@@ -77,4 +77,13 @@ class CustomerController extends Controller
         $this->view("pages/customer/tentang");
         $this->view("templates/footer");
     }
+
+    public function showContact(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Kontak"
+        ]);
+        $this->view("pages/customer/kontak");
+        $this->view("templates/footer");
+    }
 }
