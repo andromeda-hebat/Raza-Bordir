@@ -11,7 +11,7 @@
 
 <div class="d-flex">
     <?= Sidebar() ?>
-    <div class="w-100" style="margin-left: 40vh;">
+    <div class="w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
         <main class="px-5 py-2" style="height: 100vh; margin-top:10vh;">
             <h1>Tambah produk</h1>
