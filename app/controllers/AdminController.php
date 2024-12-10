@@ -50,4 +50,13 @@ class AdminController extends Controller
         $this->view("pages/admin/tambah_produk");
         $this->view("templates/footer");
     }
+
+    public function manageSales(): void
+    {
+        $this->view("templates/header", [
+            'title'=>"Manajemen Penjualan"
+        ]);
+        $this->view("pages/admin/manajemen_penjualan");
+        $this->view("templates/footer");
+    }
 }
