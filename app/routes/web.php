@@ -8,9 +8,9 @@ use App\Controllers\{CustomerController, AdminController};
 
 Router::add('GET', '/', CustomerController::class, 'index');
 Router::add('GET', '/produk', CustomerController::class, 'showProduct');
+Router::add('GET', '/produk/detail/([0-9a-zA-Z\-]+)', CustomerController::class, 'showDetailProduct');
 Router::add('GET', '/pesan', CustomerController::class, 'clientOrder');
 Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'showOrderInstructions');
-Router::add('GET', '/detail-produk', CustomerController::class, 'showDetailProduct');
 Router::add('GET', '/formulir-pemesanan', CustomerController::class, 'showOrderForm');
 Router::add('POST', '/customer-order', CustomerController::class, '');
 

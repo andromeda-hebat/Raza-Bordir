@@ -2,13 +2,16 @@
 
 function ProductCard(string $name, string $img, string $price): string
 {
+    $name_slug = str_replace(' ', '-', strtolower($name));
     return <<<HTML
-    <div class="product-card">
-        <img src="$img" alt="Produk bordir" class="product-img">
+    <div class="col">
+        <div class="product-card">
+            <img src="$img" alt="Produk bordir" class="product-img">
+        </div>
+        <p class="mb-0 fw-bold">$name</p>
+        <p class="price-tag mt-0">Mulai dari <span>$price</span></p>
+        <a href="/produk/detail/$name_slug" class="button mt-3 mb-4 p-1 text-decoration-none">Lihat detail produk</a>
     </div>
-    <p class="mb-0 fw-bold">$name</p>
-    <p class="price-tag mt-0">Mulai dari <span>$price</span></p>
-    <a href="/produk/detail/$name" class="button mt-3 mb-4 p-1 text-decoration-none">Lihat detail produk</a>
     HTML;
 }
 

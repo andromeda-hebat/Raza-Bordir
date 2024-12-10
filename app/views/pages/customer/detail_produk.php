@@ -16,7 +16,7 @@
 
         <div class="d-flex justify-content-end">
             <button class="btn border border-black rounded-0 mt-3 mx-2" style="background-color: #D0BEA4; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">Tanya admin</button>
-            <a href="/formulir-pemesanan" class="btn border border-black rounded-0 mt-3 mx-2" style="background-color: #D0BEA4; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">Pesan sekarang</a>
+            <a href="/pesan" class="btn border border-black rounded-0 mt-3 mx-2" style="background-color: #D0BEA4; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">Pesan sekarang</a>
         </div>
     </section>
 </main>
