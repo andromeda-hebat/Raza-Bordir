@@ -32,10 +32,22 @@ Langkah-langkah untuk menjalankan proyek di lokal:
     ```bash
     git clone https://github.com/andromeda-hebat/Raza-Bordir.git
     ```
-2. Nyalakan web server
+2. Konfigurasi proyek
+
+    - Ubah nama file `.example.env` menjadi `.env`. 
+    - Sesuaikan konfigurasi database host, nama, dan password sesuai dengan database yang digunakan.
+    - Contoh isi dari file `.env`:
+    ```
+    DB_HOST=localhost
+    DB_NAME=db_raza_bordir
+    DB_USER=sa
+    DB_PASSWORD=my_sEcur3-p4$sW0rd
+    ```
+
+3. Nyalakan web server
 
     Anda bisa menggunakan web server seperti Apache HTTPD atau NGINX untuk menjalankan program. Web server bisa ditemui pada XAMPP atau Laragon.
-3. Buka website di browser
+4. Buka website di browser
 
     > Jika anda menggunakan Laragon, maka anda bisa buka URL spesial berikut pada browser anda
 
