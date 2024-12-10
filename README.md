@@ -57,7 +57,7 @@ Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
         </td>
         <td width="110px" align="center" style="text-align: left;">
             <a href="https://github.com/FarrelAD">
-                <img src="https://avatars.githubusercontent.com/u/140877757?v=4?s=100" width="100px" alt="Dewita Anggraini"/><br />
+                <img src="https://avatars.githubusercontent.com/u/140877757?v=4?s=100" width="100px" alt="Farrel Augusta Dinata"/><br />
                 <sub>
                     <b>Farrel Augusta Dinata</b>
                 </sub>
@@ -65,7 +65,7 @@ Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
         </td>
         <td width="110px" align="center" style="text-align: left;">
             <a href="https://github.com/vanstevanzaky">
-                <img src="https://avatars.githubusercontent.com/u/143470195?v=4?s=100" width="100px" alt="Dewita Anggraini"/><br />
+                <img src="https://avatars.githubusercontent.com/u/143470195?v=4?s=100" width="100px" alt="Stevan Zaky Setyanto"/><br />
                 <sub>
                     <b>Stevan Zaky Setyanto</b>
                 </sub>
