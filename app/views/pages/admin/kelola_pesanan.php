@@ -11,7 +11,7 @@
 
 <div class="d-flex">
     <?= Sidebar() ?>
-    <div class="position-top w-100" style="margin-left:40vh;">
+    <div class="position-top w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
         <main style="min-height: 100vh; margin-top:10vh;">
             <div class="px-5">

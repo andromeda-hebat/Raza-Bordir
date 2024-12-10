@@ -8,12 +8,12 @@ function Sidebar(): string
     $ask_logout_modal = AskLogutModal();
     return <<<HTML
     <div class="d-flex flex-column align-items-center border-end justify-content-center position-fixed"
-    style="background-color: white; width: 40vh; height: 100vh; padding-top: 20px;">
+    style="background-color: white; width: 35vh; height: 100vh; padding-top: 20px;">
 
         <!-- Tautan Navigasi -->
         <nav class="nav w-100 d-flex justify-content-center text-start">
-            <h2>
-                RAZA BORDIR
+            <h2 style="font-family: 'Italianno', serif;">
+                Raza Bordir
             </h2>
             <a href="/dashboard" class="sidebar-nav nav-link w-100 ps-5 text-black">
                 Dashboard
