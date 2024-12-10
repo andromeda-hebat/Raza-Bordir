@@ -12,24 +12,37 @@ Penulisan panduan ini terbagi ke dalam dua jenis, yaitu panduan untuk kontributo
 
 Kontributor internal adalah pihak yang dengan sengaja diundang untuk menggarap proyek ini. Berikut adalah beberapa panduan yang perlu dipatuhi oleh para kontributor internal:
 
-1. Kloning repositori ini ke komputer Anda
-2. Ganti branch sesuai dengan nama Anda.
+- Upaya kontribusi ke branch utama
+    1. Kloning repositori ini ke komputer Anda
+    2. Ganti branch sesuai dengan nama Anda.
 
-    Saat ini sudah terdapat 4 branch dengan 3 role berbeda.
-    ```
-    ui/dewita   # berhubungan dengan tampilan antarmuka pengguna dan aset-aset yang akan dibutuhkan di dalam website
-    db/afifah   # berhubungan dengan skema basis data yang digunakan
-    dev/farrel  # implementasi ke website (frontend dan backend)
-    dev/stevan  # implementasi ke website (frontend)
-    ```
-    
-    Jika tidak ditemukan branch yang sesuai, maka Anda bisa membuat branch baru dengan menggunakan perintah berikut:
-    ```bash
-    git checkout -b <nama-role>/<nama-anda>
-    ```
+        Saat ini sudah terdapat 4 branch dengan 3 role berbeda.
+        ```
+        ui/dewita   # berhubungan dengan tampilan antarmuka pengguna dan aset-aset yang akan dibutuhkan di dalam website
+        db/afifah   # berhubungan dengan skema basis data yang digunakan
+        dev/farrel  # implementasi ke website (frontend dan backend)
+        dev/stevan  # implementasi ke website (frontend)
+        ```
+        
+        Jika tidak ditemukan branch yang sesuai, maka Anda bisa membuat branch baru dengan menggunakan perintah berikut:
+        ```bash
+        git checkout -b <nama-role>/<nama-anda>
+        ```
 
-3. Buat commit perubahan dengan pesan yang jelas (`git commit -m "menambahkan fitur notifikasi pada pengguna mahasiswa"`).
-4. Buat pull request ke branch utama (`main`). Buat penjelasan singkat mengenai perubahan yang telah dilakukan.
+    3. Buat commit perubahan dengan pesan yang jelas (`git commit -m "menambahkan fitur notifikasi pada pengguna mahasiswa"`).
+    4. Buat pull request ke branch utama (`main`). Buat penjelasan singkat mengenai perubahan yang telah dilakukan.
+
+- Mendapatkan pembaruan terkini dari branch utama
+    1. Lakukan upaya pull dengan tetap berada di branch anda. 
+
+        > ⚠️  ANDA TIDAK PERLU MENGGANTI BRANCH KE MAIN! GANTI BRANCH MAIN JIKA BENAR-BENAR DIPERLUKAN SAJA!
+
+        Ketikkan perintah berikut di terminal
+        ```bash
+        git pull origin main
+        ```
+        Maka akan secara otomatis pembaruan dari branch utama akan masuk ke branch lokal anda
+    2. Jika terjadi masalah saat proses penggabungan (merge), pastikan perubahan yang anda lakukan tidak mengganggu perubahan di branch utama. Jika anda bingung, lebih baik hubungi kepada manajer proyek untuk informasi lebih lanjut
 
 ## Panduan kontributor eksternal
 
