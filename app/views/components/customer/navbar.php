@@ -13,7 +13,7 @@ function Navbar(): string
         </div>
 
         <div class="position-absolute start-50 translate-middle-x">
-            <p class="p-0 m-0 fs-2 text-center" style="font-family: 'Italianno', serif;">Raza Bordir</p>
+            <a href="/" class="p-0 m-0 fs-2 text-center text-decoration-none text-black" style="font-family: 'Italianno', serif;">Raza Bordir</a>
         </div>
 
         <!-- Desktop Links -->
