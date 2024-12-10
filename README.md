@@ -51,7 +51,7 @@ Terdapat beberapa dokumentasi yang bisa anda lihat sesuai dengan kebutuhan anda.
 
 ---
 ---
-## Contributors ✨
+## Kontributor ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
