@@ -1,11 +1,11 @@
 <div class="d-flex">
     <?php include __DIR__ . '/../../components/admin/sidebar.php' ?>
-    <div class="position-top w-100">
-    <?php include __DIR__ . '/../../components/admin/topbar.php'?>
-        <main style="height: 90vh;">
+    <div class="position-top w-100" style="margin-left:40vh;">
+        <?php include __DIR__ . '/../../components/admin/topbar.php' ?>
+        <main style="height: 100vh; margin-top:10vh;">
             <div class="px-5">
                 <h2 class="pt-4">Kelola Pesanan</h2>
-        
+
                 <div class="row mx-0 bg-white mt-5">
                     <div class="col border-end border-start border-black">Semua</div>
                     <div class="col border-end border-black">Belum dibayar</div>
@@ -13,7 +13,7 @@
                     <div class="col border-end border-black">Proses dibayar</div>
                     <div class="col border-end border-black">Selesai dibayar</div>
                 </div>
-        
+
                 <table class="table mt-5 border-top border-black">
                     <thead>
                         <tr>
