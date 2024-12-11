@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helpers\ErrorLog;
+
 class Database
 {
     private static string $DB_SERVER;
@@ -18,37 +20,58 @@ class Database
         self::$DB_PASSWORD = $_ENV['DB_PASSWORD'] ?? throw new \Exception('DB_PASSWORD not set');
     }
 
-    public static function getConnectionWithouDB(): \PDO
+    private static function getDBConnection(string $dsn): \PDO
     {
-        self::initialize();
-
-        $dsn = "sqlsrv:Server=" . self::$DB_SERVER;
-        
         try {
             $conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            throw new \Exception("Database connection failed: " . $e->getMessage());
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
         }
-        
+
         return $conn;
     }
 
-    public static function getConnection(): \PDO
+    public static function getConnection(bool $is_with_db = true, string $db_type = 'Microsoft SQL Server'): \PDO
     {
         if (self::$conn === null) {
             self::initialize();
-            
-            $dsn = "sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME;
+        }
 
-            try {
-                self::$conn = new \PDO($dsn, self::$DB_USER, self::$DB_PASSWORD);
-                self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            } catch (\PDOException $e) {
-                throw new \Exception("Database connection failed: " . $e->getMessage());
+        $dsn = '';
+
+        if ($is_with_db) {
+            switch ($db_type) {
+                case 'Microsoft SQL Server':
+                    $dsn = "sqlsrv:Server=" . self::$DB_SERVER . ";Database=" . self::$DB_NAME;
+                    break;
+                case 'MySQL':
+                case 'MariaDB':
+                    $dsn = "mysql:host=" . self::$DB_SERVER . ";dbname=" . self::$DB_NAME;
+                    break;
+                default:
+                    throw new \InvalidArgumentException("Unsupported database type: $db_type");
             }
+        } else {
+            switch ($db_type) {
+                case 'Microsoft SQL Server':
+                    $dsn = "sqlsrv:Server=" . self::$DB_SERVER;
+                    break;
+                case 'MySQL':
+                case 'MariaDB':
+                    $dsn = "mysql:host=" . self::$DB_SERVER;
+                    break;
+                default:
+                    throw new \InvalidArgumentException("Unsupported database type: $db_type");
+            }
+        }
+
+        if (self::$conn === null || !$is_with_db) {
+            self::$conn = self::getDBConnection($dsn);
         }
 
         return self::$conn;
     }
+
 }
