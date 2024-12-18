@@ -8,7 +8,7 @@ function Sidebar(): string
     $ask_logout_modal = AskLogutModal();
     return <<<HTML
     <div class="d-flex flex-column align-items-center border-end justify-content-center position-fixed"
-    style="background-color: white; width: 35vh; height: 100vh; padding-top: 20px;">
+    style="background-color: #F7F3EA; width: 35vh; height: 100vh; padding-top: 20px;">
 
         <!-- Tautan Navigasi -->
         <nav class="nav w-100 d-flex justify-content-center text-start">

@@ -13,7 +13,7 @@
     <?= Sidebar() ?>
     <div class="w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
-        <main class="px-5 py-2" style="height: 100vh; margin-top:10vh;">
+        <main class="px-5" style="height: 100vh; margin-top:10vh;">
             <h1>Tambah produk</h1>
             <form action="/katalog-produk/tambah" method="post" enctype="multipart/form-data">
                 <label for="nama-produk">Nama produk</label><br>

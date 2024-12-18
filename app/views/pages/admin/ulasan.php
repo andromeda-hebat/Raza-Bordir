@@ -14,7 +14,7 @@
     <div class="w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
         <main style="height: 100vh; margin-top:10vh;">
-            <div class="p-5">
+            <div class="px-5">
                 <h1>Ulasan</h1>
                 <table class="table">
                     <thead>
