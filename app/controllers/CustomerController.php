@@ -42,6 +42,15 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
+    public function processCustomerOrder(): void
+    {
+        echo json_encode([
+            'message'=> "good bro!",
+            'data' => $_POST,
+            'file' => $_FILES
+        ]);
+    }
+
     public function viewDetailProduct(): void
     {
         $this->view("templates/header", [
