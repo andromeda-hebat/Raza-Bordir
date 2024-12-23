@@ -1,8 +1,4 @@
-<?php
-
-function AskLogutModal(): string
-{
-    return <<<HTML
+<?php function AskLogutModal(): void { ?>
     <div class="modal" tabindex="-1" id="modalConfirmationLogout">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -20,5 +16,4 @@ function AskLogutModal(): string
             </div>
         </div>
     </div>
-    HTML;
-}
+<?php } ?>
