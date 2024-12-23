@@ -53,6 +53,7 @@
             <li><a href="/pesan" class="nav-link my-2">Pesan</a></li>
             <li><a href="#" class="nav-link my-2">Promo</a></li>
             <li><a href="/tentang" class="nav-link my-2">Tentang</a></li>
+            <li><a href="/login" class="nav-link my-2"><button>Login</button></a></li>
         </ul>
         <div class="p-4 w-100 position-absolute bottom-0" style="background-color: #EAE1D0; height: 100px">
             <a href="/kontak" class="text-decoration-none text-black">Hubungi Kami</a>
