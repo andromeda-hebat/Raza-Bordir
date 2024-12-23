@@ -20,8 +20,6 @@ Router::add('GET', '/produk/detail/([0-9a-zA-Z\-]+)', CustomerController::class,
 Router::add('GET', '/pesan', CustomerController::class, 'viewCustomerOrder');
 Router::add('POST', '/pesan', CustomerController::class, 'processCustomerOrder');
 Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'viewOrderInstructions');
-Router::add('GET', '/formulir-pemesanan', CustomerController::class, 'viewOrderForm');
-Router::add('POST', '/customer-order', CustomerController::class, '');
 Router::add('GET', '/tentang', CustomerController::class, 'viewAboutUs');
 Router::add('GET', '/kontak', CustomerController::class, 'viewContact');
 

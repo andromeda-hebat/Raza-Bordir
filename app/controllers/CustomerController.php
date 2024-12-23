@@ -88,15 +88,6 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewOrderForm(): void
-    {
-        $this->view("templates/header", [
-            'title' => "Raza Bordir"
-        ]);
-        $this->view("pages/customer/formulir_pemesanan");
-        $this->view("templates/footer");
-    }
-
     public function processOrder(): void
     {
         http_response_code(200);

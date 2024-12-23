@@ -25,6 +25,9 @@
                     <a class="nav-link" href="/pesan">Pesan</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/cek-pesanan">Cek Pesanan</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Promo</a>
                 </li>
                 <li class="nav-item">
@@ -51,6 +54,7 @@
             <li><a href="/" class="nav-link my-2">Beranda</a></li>
             <li><a href="/produk" class="nav-link my-2">Produk</a></li>
             <li><a href="/pesan" class="nav-link my-2">Pesan</a></li>
+            <li class="nav-item"><a class="nav-link" href="/cek-pesanan">Cek Pesanan</a></li>
             <li><a href="#" class="nav-link my-2">Promo</a></li>
             <li><a href="/tentang" class="nav-link my-2">Tentang</a></li>
             <li><a href="/login" class="nav-link my-2"><button>Login</button></a></li>
