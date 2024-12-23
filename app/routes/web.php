@@ -19,6 +19,10 @@ Router::add('GET', '/tentang', CustomerController::class, 'viewAboutUs');
 Router::add('GET', '/kontak', CustomerController::class, 'viewContact');
 
 
+// Auth
+Router::add('POST', '/logout', AuthController::class,'logout');
+
+
 // Admin
 Router::add('GET', '/admin', AuthController::class, 'viewLoginPage');
 Router::add('POST', '/admin', AuthController::class, 'processLogin');

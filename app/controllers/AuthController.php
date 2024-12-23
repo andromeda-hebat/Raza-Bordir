@@ -28,4 +28,11 @@ class AuthController extends Controller
             }
         }
     }
+
+    public function logout(): void
+    {
+        session_unset();
+        session_destroy();
+        header('Location: /');
+    }
 }
