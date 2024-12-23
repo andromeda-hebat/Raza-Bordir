@@ -8,6 +8,7 @@ use App\Controllers\{GeneralController, CustomerController, AuthController, Admi
 Router::add('GET', '/', GeneralController::class, 'index');
 Router::add('GET', '/tentang', GeneralController::class, 'viewAboutUs');
 Router::add('GET', '/kontak', GeneralController::class, 'viewContact');
+Router::add('GET', '/static/img/(.+)', GeneralController::class, 'serveStaticImgFile');
 
 
 
