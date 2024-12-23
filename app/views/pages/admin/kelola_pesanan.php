@@ -29,25 +29,23 @@
                     <tr>
                         <th>Nama</th>
                         <th>Nomor HP</th>
-                        <th>Desain</th>
                         <th>Media</th>
                         <th>Jumlah</th>
-                        <th>Harga</th>
                         <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Ani</td>
-                        <td>099999999</td>
-                        <td>a.png</td>
-                        <td>Kain</td>
-                        <td>100</td>
-                        <td>Rp 5.000/pcs</td>
-                        <td>
-                            <button>Rincian</button>
-                        </td>
-                    </tr>
+                    <?php foreach ($data['orders'] as $key => $value): ?>
+                        <tr>
+                            <td><?= $value['customer'] ?></td>
+                            <td><?= $value['phone'] ?></td>
+                            <td><?= $value['product'] ?></td>
+                            <td><?= $value['amount'] ?></td>
+                            <td>
+                                <button>Rincian</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </main>
