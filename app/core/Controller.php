@@ -8,7 +8,7 @@ class Controller {
         require __DIR__ . '/../views/' . $view .'.php';
     }
 
-    protected function sendPageMethodNotAllowed(): void
+    public function sendPageMethodNotAllowed(): void
     {
         http_response_code(405);
         $this->view("templates/header", [
@@ -17,7 +17,7 @@ class Controller {
         $this->view("pages/general/client_method_not_allowed");
     }
 
-    protected function sendPageNotFound(): void
+    public function sendPageNotFound(): void
     {
         http_response_code(404);
         $this->view("templates/header", [
@@ -26,7 +26,7 @@ class Controller {
         $this->view("pages/general/page_not_found");
     }
 
-    protected function sendWarningJSON(int $response_code, string $message): void
+    public function sendWarningJSON(int $response_code, string $message): void
     {
         http_response_code($response_code);
         echo json_encode([
