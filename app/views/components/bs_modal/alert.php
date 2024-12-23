@@ -10,7 +10,7 @@
                 <p><?= $message ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="text-white" style="background-color: var(--color-navy-blue);"
+                <button type="button" class="text-black" style="background-color: var(--ivory-cream-color);"
                     data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>

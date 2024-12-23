@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../../components/customer/navbar.php' ?>
+<?php require_once __DIR__ . '/../../components/general/navbar.php' ?>
 <?php require_once __DIR__ . '/../../components/customer/product_card.php' ?>
 
 

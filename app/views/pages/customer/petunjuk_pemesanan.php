@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../../components/customer/navbar.php' ?>
+<?php require __DIR__ . '/../../components/general/navbar.php' ?>
 
 
 

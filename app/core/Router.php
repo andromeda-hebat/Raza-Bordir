@@ -2,16 +2,17 @@
 
 namespace App\Core;
 
-use App\Controllers\ExceptionController;
+use App\Core\Controller;
 
 class Router
 {
     public static array $routes = [];
-    private static ExceptionController $exception_controller;
+
+    private static Controller $base_controller;
 
     public static function initialize(): void
     {
-        self::$exception_controller = new ExceptionController;
+        self::$base_controller = new Controller;
     }
 
     public static function add(string $method, string $path, string $controller, string $function): void
@@ -53,12 +54,12 @@ class Router
         }
 
         if ($is_path_found && !$is_method_found) {
-            self::$exception_controller->sendPageMethodNotAllowed();
+            self::$base_controller->sendPageMethodNotAllowed();
             return;
         }
 
         if (!$is_path_found) {
-            self::$exception_controller->sendPageNotFound();
+            self::$base_controller->sendPageNotFound();
             return;
         }
     }
