@@ -30,6 +30,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/tentang">Tentang</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <button>Login</button>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
