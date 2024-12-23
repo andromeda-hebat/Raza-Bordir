@@ -2,11 +2,17 @@
 
 namespace App\Core;
 
-use App\Controllers\AuthController;
+use App\Controllers\ExceptionController;
 
 class Router
 {
     public static array $routes = [];
+    private static ExceptionController $exception_controller;
+
+    public static function initialize(): void
+    {
+        self::$exception_controller = new ExceptionController;
+    }
 
     public static function add(string $method, string $path, string $controller, string $function): void
     {
@@ -47,12 +53,12 @@ class Router
         }
 
         if ($is_path_found && !$is_method_found) {
-            (new AuthController)->sendPageMethodNotAllowed();
+            self::$exception_controller->sendPageMethodNotAllowed();
             return;
         }
 
         if (!$is_path_found) {
-            (new AuthController)->sendPageNotFound();
+            self::$exception_controller->sendPageNotFound();
             return;
         }
     }
