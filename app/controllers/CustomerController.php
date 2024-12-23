@@ -6,15 +6,6 @@ use App\Core\Controller;
 
 class CustomerController extends Controller
 {
-    public function index(): void
-    {
-        $this->view("templates/header", [
-            'title' => "Raza Bordir"
-        ]);
-        $this->view("pages/customer/index");
-        $this->view("templates/footer");
-    }
-
     public function viewProduct(): void
     {
         $this->view("templates/header", [
