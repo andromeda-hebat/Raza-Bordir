@@ -114,4 +114,45 @@ class OrderRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function getTotalOrder(): int
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT
+                        COUNT(order_id) AS total_order
+                    FROM Orders
+                SQL)
+                ->fetch(\PDO::FETCH_ASSOC)['total_order'];
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function getTop3HighestOrder(): array
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT TOP 3
+                        p.product_id,
+                        p.name, 
+                        COUNT(o.product_id) AS order_count,
+                        p.image
+                    FROM Products p
+                    INNER JOIN Orders o ON p.product_id = o.product_id
+                    WHERE 
+                        YEAR(o.order_date) = YEAR(GETDATE()) AND
+                        MONTH(o.order_date) = MONTH(GETDATE())
+                    GROUP BY p.product_id, p.name, p.image
+                    ORDER BY COUNT(o.product_id) DESC
+                SQL)
+                ->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
