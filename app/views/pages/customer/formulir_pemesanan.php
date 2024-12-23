@@ -4,6 +4,10 @@
 
 
 
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <?= Navbar() ?>
 <main class="mt-5 p-3">
     <section id="media-selection" class="min-vh-100">
