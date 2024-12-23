@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Core\Database;
-use App\Helpers\ErrorLog;
+use App\Helper\ErrorLog;
 
 class UserRepository
 {

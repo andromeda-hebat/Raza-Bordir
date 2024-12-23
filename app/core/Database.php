@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-use App\Helpers\ErrorLog;
+use App\Helper\ErrorLog;
 
 class Database
 {
