@@ -6,7 +6,7 @@ use App\Core\Controller;
 
 class AuthController extends Controller
 {
-    public function showLoginPage(): void
+    public function viewLoginPage(): void
     {
         $this->view("templates/header", [
             'title'=>"Admin Login"
