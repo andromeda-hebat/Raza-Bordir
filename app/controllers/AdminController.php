@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Repository\OrderRepository;
-use App\Repository\ProductsRepository;
+use App\Repository\{OrderRepository, ProductsRepository};
+use App\Helper\FileManager;
 
 class AdminController extends Controller
 {
@@ -75,13 +75,53 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewTambahProduk(): void
+    public function viewAddProduct(): void
     {
         $this->view("templates/header", [
             'title'=>"Tambah Produk"
         ]);
         $this->view("pages/admin/tambah_produk");
         $this->view("templates/footer");
+    }
+
+    public function processAddProduct(): void
+    {
+        if (
+            !isset($_POST['name']) ||
+            !isset($_POST['description']) ||
+            !isset($_FILES['image']) ||
+            !isset($_POST['price'])
+        ) {
+            $this->sendWarningJSON(400, "Incomplete data!");
+            exit;
+        }
+
+        $_FILES['image']['new_name'] = uniqid() . '--' . basename($_FILES['image']['name']);
+
+        $is_move_uploaded_file_success = FileManager::moveFile($_FILES, __DIR__ . '/../../storage/internal/produk/');
+
+        if (!$is_move_uploaded_file_success) {
+            $this->sendWarningJSON(500, "There is a warning while try to move uploaded file to the server!");
+            exit;
+        }
+
+        try {
+            ProductsRepository::addNewProduct([
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'image' => $_FILES['image']['new_name'],
+                'start_price' => $_POST['price']
+            ]);
+        } catch (\PDOException $e) {
+            $this->sendWarningJSON(500, "Database error!");
+            unlink(__DIR__ . '/../../storage/internal/produk/' . $_FILES['image']['new_name']);
+            exit;
+        }
+
+        http_response_code(200);
+        echo json_encode([
+            'message'=> "success"
+        ]);
     }
 
     public function viewManageSales(): void

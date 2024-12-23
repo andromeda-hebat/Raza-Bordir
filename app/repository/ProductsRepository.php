@@ -10,12 +10,32 @@ class ProductsRepository
     public static function getAllProducts(): array
     {
         try {
-            $stmt = Database::getConnection()->query(<<<SQL
-            SELECT * 
-            FROM Products
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT * 
+                    FROM Products
+                SQL)
+                ->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function addNewProduct(array $product): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+            INSERT INTO Products
+                (name, description, start_price, image)
+            VALUES
+                (:name, :description, :start_price, :image)
             SQL);
+            $stmt->bindValue(':name', $product['name'], \PDO::PARAM_STR);
+            $stmt->bindValue(':description', $product['description'], \PDO::PARAM_STR);
+            $stmt->bindValue(':start_price', $product['start_price'] , \PDO::PARAM_INT);
+            $stmt->bindValue(':image', $product['image'], \PDO::PARAM_STR);
             $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
