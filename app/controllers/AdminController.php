@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Repository\OrderRepository;
+use App\Repository\ProductsRepository;
 
 class AdminController extends Controller
 {
@@ -34,13 +35,23 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewKelolaKatalogProduk(): void
+    public function viewManageProductCatalog(): void
     {
+        try {
+            $products = ProductsRepository::getAllProducts();
+        } catch (\PDOException $e) {
+            $this->sendWarningJSON(500, "Database error!");
+            exit;
+        }
+
+
         $this->view("templates/header", [
             'title'=>"Kelola Katalog Produk"
         ]);
-        $this->view("pages/admin/kelola_katalog_produk");
-        $this->view("templates/footer");
+        $this->view("pages/admin/kelola_katalog_produk", [
+            'products' => $products
+        ]);
+        $this->view("templates/admin_footer");
     }
 
     public function viewUlasan(): void
