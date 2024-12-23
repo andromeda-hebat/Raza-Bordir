@@ -60,22 +60,12 @@
                     max-width: 100%;
                 }
             </style>
-            <div class="row">
-                <?= ProductCardV2('Kain', '/assets/img/produk-bordir-kain.jpg') ?>
-                <?= ProductCardV2('Tas', '/assets/img/produk-bordir-tas-2.jpg') ?>
-            </div>
-            <div class="row">
-                <?= ProductCardV2('Baju', '/assets/img/produk-bordir-baju.jpg') ?>
-                <?= ProductCardV2('Celana', '/assets/img/produk-bordir-celana.jpg') ?>
-            </div>
-            <div class="row">
-                <?= ProductCardV2('Nama', '/assets/img/produk-bordir-nama.jpg') ?>
-                <?= ProductCardV2('Jilbab', '/assets/img/produk-bordir-jilbab.jpg') ?>
-            </div>
-            <div class="row">
-                <?= ProductCardV2('Pandel', '/assets/img/produk-bordir-pandel.jpg') ?>
-                <?= ProductCardV2('Pataka', '/assets/img/produk-bordir-bendera-pataka.jpg') ?>
-            </div>
+            <?php for ($i = 1; $i < count($data['products']); $i+=2): ?>
+                <div class="row">
+                    <?= ProductCardV2($data['products'][$i-1]['name'], $data['products'][$i-1]['product_id'], '/static/img/' . $data['products'][$i-1]['image']) ?>
+                    <?= ProductCardV2($data['products'][$i]['name'], $data['products'][$i]['product_id'],  '/static/img/' . $data['products'][$i]['image']) ?>
+                </div>
+            <?php endfor; ?>
         </div>
 
         <hr>
@@ -158,7 +148,7 @@
             <label for="input-amount">Jumlah</label><br>
             <input type="number" name="amount" id="input-amount" class="w-100"><br>
             <label for="input-price">Perkiraan harga</label>
-            <input type="text" name="price" id="input-price" class="w-100" readonly value="Rp 30.000">
+            <input type="text" name="price" id="input-price" class="w-100" readonly value="30000">
 
             <div class="card flex-row align-items-center border border-info text-primary mt-5"
                 style="background-color: rgba(116, 182, 222, 0.23) !important">
@@ -278,7 +268,7 @@
         // Full form section
         $('#submit-form-btn').on('click', function () {
             const formData = new FormData();
-            formData.append('media', $(selectedMedia).data('name'));
+            formData.append('product_id', $(selectedMedia).data('product-id'));
             formData.append('design', $('#input-design')[0].files[0]);
             formData.append('note', $('#notes-request').val());
             formData.append('name', $('#input-name').val());
