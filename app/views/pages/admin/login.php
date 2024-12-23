@@ -1,3 +1,8 @@
+
+<?php ////////////////////// ?>
+<?php ///////--HTML--/////// ?>
+<?php ////////////////////// ?>
+
 <main class="min-vh-100 d-flex justify-content-center align-items-center">
     <form action="/admin" method="post" class="card p-5 w-25">
         <h1 class="text-center">Administrator</h1>
