@@ -9,8 +9,8 @@
     </div>
 <?php } ?>
 
-<?php function ProductCardV2(string $name, string $img): void { ?>
-    <div class="product-option col text-decoration-none text-black" data-name="<?= $name ?>">
+<?php function ProductCardV2(string $name, string $product_id,  string $img): void { ?>
+    <div class="product-option col text-decoration-none text-black" data-name="<?= $name ?>" data-product-id="<?= $product_id ?>">
         <div class="product-card">
             <img src="<?= $img ?>" alt="Produk bordir" class="product-img">
         </div>
