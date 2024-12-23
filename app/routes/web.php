@@ -36,7 +36,7 @@ Router::add('GET', '/panduan-pemesanan', OrderController::class, 'viewOrderInstr
 // Admin
 Router::add('GET', '/dashboard', AdminController::class, 'viewDashboard');
 Router::add('GET', '/kelola-pesanan', AdminController::class, 'viewMangeOrders');
-Router::add('GET', '/katalog-produk', AdminController::class, 'viewKelolaKatalogProduk');
+Router::add('GET', '/katalog-produk', AdminController::class, 'viewManageProductCatalog');
 Router::add('GET', '/katalog-produk/tambah', AdminController::class, 'viewTambahProduk');
 Router::add('GET', '/ulasan', AdminController::class, 'viewUlasan');
 Router::add('GET', '/penjualan', AdminController::class, 'viewManageSales');
