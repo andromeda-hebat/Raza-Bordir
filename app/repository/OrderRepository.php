@@ -10,29 +10,56 @@ class OrderRepository
     public static function addNewOrder(array $data): void
     {
         try {
-            $stmt = Database::getConnection()->prepare(<<<SQL
+            Database::getConnection()->beginTransaction();
+            $stmt1 = Database::getConnection()->prepare(<<<SQL
+                INSERT INTO Customers
+                    (username, phone, password, address, age)
+                VALUES
+                    (:username, :phone, :password, :address, :age)
+            SQL);
+            $stmt1->bindValue(':username', $data['name'], \PDO::PARAM_STR);
+            $stmt1->bindValue(':phone', $data['phone'], \PDO::PARAM_STR);
+            $stmt1->bindValue(':password', $data['password'], \PDO::PARAM_STR);
+            $stmt1->bindValue(':address', $data['address'], \PDO::PARAM_STR);
+            $stmt1->bindValue(':age', $data['age'], \PDO::PARAM_INT);
+            $stmt1->execute();
+
+            $stmt2 = Database::getConnection()->prepare(<<<SQL
+                SELECT
+                    customer_id
+                FROM Customers
+                WHERE username = :username AND phone = :phone
+            SQL);
+            $stmt2->bindValue(':username', $data['name'], \PDO::PARAM_STR);
+            $stmt2->bindValue(':phone', $data['phone'], \PDO::PARAM_STR);
+            $stmt2->execute();
+            $customer_id = $stmt2->fetch()['customer_id'];
+
+            $stmt3 = Database::getConnection()->prepare(<<<SQL
                 INSERT INTO Orders
+                    (amount, total_price, order_date, notes, design, product_id, customer_id)
                 VALUES (
-                    :name,
-                    :phone,
-                    :address,
                     :amount,
                     :price,
-                    :media,
+                    :order_date,
+                    :note,
                     :design,
-                    :note
+                    :product_id,
+                    :customer_id
                 )
             SQL);
-            $stmt->bindValue(':name', $data['name'], \PDO::PARAM_STR);
-            $stmt->bindValue(':phone', $data['phone'], \PDO::PARAM_STR);
-            $stmt->bindValue(':address', $data['address'], \PDO::PARAM_STR);
-            $stmt->bindValue(':amount', $data['amount'], \PDO::PARAM_STR);
-            $stmt->bindValue(':price', $data['price'], \PDO::PARAM_STR);
-            $stmt->bindValue(':media', $data['media'], \PDO::PARAM_STR);
-            $stmt->bindValue(':design', $data['design'], \PDO::PARAM_STR);
-            $stmt->bindValue(':note', $data['note'], \PDO::PARAM_STR);
-            $stmt->execute();
+            $stmt3->bindValue(':amount', $data['amount'], \PDO::PARAM_INT);
+            $stmt3->bindValue(':price', $data['price'], \PDO::PARAM_STR);
+            $stmt3->bindValue(':order_date', $data['order_date'], \PDO::PARAM_STR);
+            $stmt3->bindValue(':note', $data['note'], \PDO::PARAM_STR);
+            $stmt3->bindValue(':design', $data['design'], \PDO::PARAM_STR);
+            $stmt3->bindValue(':product_id', $data['product_id'], \PDO::PARAM_INT);
+            $stmt3->bindValue(':customer_id', $customer_id, \PDO::PARAM_INT);
+            $stmt3->execute();
+
+            Database::getConnection()->commit();
         } catch (\PDOException $e) {
+            Database::getConnection()->rollBack();
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());
         }

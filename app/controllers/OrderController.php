@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Repository\OrderRepository;
+use App\Repository\{OrderRepository, ProductsRepository};
 use App\Helper\FileManager;
 
 class OrderController extends Controller
@@ -11,10 +11,13 @@ class OrderController extends Controller
     
     public function viewCustomerOrder(): void
     {
+        $products = ProductsRepository::getAllProducts();
         $this->view("templates/header", [
             'title' => "Raza Bordir"
         ]);
-        $this->view("pages/customer/pesan");
+        $this->view("pages/customer/pesan", [
+            'products' => $products
+        ]);
         $this->view("templates/footer");
     }
 
@@ -32,7 +35,7 @@ class OrderController extends Controller
         if (
             !isset($_POST['name']) || !isset($_POST['phone']) ||
             !isset($_POST['address']) || !isset($_POST['amount']) ||
-            !isset($_POST['price']) || !isset($_POST['media']) ||
+            !isset($_POST['price']) || !isset($_POST['product_id']) ||
             !isset($_FILES['design']) || !isset($_POST['note'])
         ) {
             $this->sendWarningJSON(400, "Incomplete data request!");
@@ -52,12 +55,15 @@ class OrderController extends Controller
             OrderRepository::addNewOrder([
                 'name' => $_POST['name'],
                 'phone' => $_POST['phone'],
+                'password' => 'dummy-password',
                 'address' => $_POST['address'],
+                'age' => 20,
                 'amount' => $_POST['amount'],
                 'price' => $_POST['price'],
-                'media' => $_POST['media'],
+                'product_id' => $_POST['product_id'],
                 'design' => $_FILES['design']['name'],
-                'note' => $_POST['note']
+                'note' => $_POST['note'],
+                'order_date' => date('Y-m-d')
             ]);
         } catch (\PDOException $e) {
             $this->sendWarningJSON(500, "Database error!");
@@ -65,10 +71,9 @@ class OrderController extends Controller
             exit;
         }
 
+        http_response_code(200);
         echo json_encode([
-            'message'=> "good bro!",
-            'data' => $_POST,
-            'file' => $_FILES
+            'message'=> "success"
         ]);
     }
 

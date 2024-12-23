@@ -148,7 +148,7 @@
             <label for="input-amount">Jumlah</label><br>
             <input type="number" name="amount" id="input-amount" class="w-100"><br>
             <label for="input-price">Perkiraan harga</label>
-            <input type="text" name="price" id="input-price" class="w-100" readonly value="Rp 30.000">
+            <input type="text" name="price" id="input-price" class="w-100" readonly value="30000">
 
             <div class="card flex-row align-items-center border border-info text-primary mt-5"
                 style="background-color: rgba(116, 182, 222, 0.23) !important">
