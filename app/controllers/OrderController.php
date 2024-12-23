@@ -35,7 +35,7 @@ class OrderController extends Controller
             !isset($_POST['price']) || !isset($_POST['media']) ||
             !isset($_FILES['design']) || !isset($_POST['note'])
         ) {
-            $this->sendWarningJSON(400, "Data tidak komplit!");
+            $this->sendWarningJSON(400, "Incomplete data request!");
             exit;
         }
 
@@ -61,6 +61,7 @@ class OrderController extends Controller
             ]);
         } catch (\PDOException $e) {
             $this->sendWarningJSON(500, "Database error!");
+            unlink(__DIR__ . '/../../storage/uploads/design_request/' . $_FILES['design']['new_name']);
             exit;
         }
 
