@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Repository\OrderRepository;
 
 class AdminController extends Controller
 {
@@ -15,12 +16,21 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function viewKelolaPesananPage(): void
+    public function viewMangeOrders(): void
     {
+        try {
+            $orders = OrderRepository::getAllOrders();
+        } catch (\PDOException   $e) {
+            $this->sendWarningJSON(500, "Database error!");
+            exit;
+        }
+
         $this->view("templates/header", [
             'title'=>"Kelola Pesanan"
         ]);
-        $this->view("pages/admin/kelola_pesanan");
+        $this->view("pages/admin/kelola_pesanan", [
+            'orders' => $orders
+        ]);
         $this->view("templates/footer");
     }
 

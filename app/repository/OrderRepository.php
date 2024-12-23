@@ -93,4 +93,25 @@ class OrderRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function getAllOrders(): array
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT
+                        c.username AS customer,
+                        phone,
+                        p.name AS product,
+                        amount
+                    FROM Orders o
+                    INNER JOIN Customers c ON o.customer_id = c.customer_id
+                    INNER JOIN Products p ON p.product_id = o.product_id
+                SQL)
+                ->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
