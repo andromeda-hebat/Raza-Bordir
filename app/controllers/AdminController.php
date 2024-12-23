@@ -10,11 +10,23 @@ class AdminController extends Controller
 {
     public function viewDashboard(): void
     {
+        try {
+            $total_order = OrderRepository::getTotalOrder();
+            $top_3_highest_order = OrderRepository::getTop3HighestOrder();
+        } catch (\Throwable $th) {
+            $this->sendWarningJSON(500, "Database error!");
+            exit;
+        }
+
+
         $this->view("templates/header", [
             'title'=>"Dashboard"
         ]);
-        $this->view("pages/admin/dashboard");
-        $this->view("templates/footer");
+        $this->view("pages/admin/dashboard", [
+            'total_order' => $total_order,
+            'top_3_highest_order' => $top_3_highest_order
+        ]);
+        $this->view("templates/admin_footer");
     }
 
     public function viewMangeOrders(): void

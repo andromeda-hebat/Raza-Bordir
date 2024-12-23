@@ -13,44 +13,20 @@
     <?= Sidebar() ?>
     <div class="position-top w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
-        <main class="px-5 pb-5" style="min-height:100vh; margin-top:10vh;">
+        <main class="px-5 pb-5 min-vh-100" style="margin-top:10vh;">
             <section>
                 <h2>Kategori Produk Terlaris</h2>
 
                 <div class="d-flex mt-2">
-                    <div class="card card-body me-4 d-flex justify-content-center border-black" style="width: 25vh;">
-                        <div class="text-center">
-                            <svg class="mb-2" width="90" height="90" viewBox="0 0 90 90" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="45" cy="45" r="44.5" fill="#A7977F" fill-opacity="0.51" stroke="black" />
-                            </svg>
-
-                            <h6 class="mb-0">Bordir Nama</h6>
-                            <p class="mb-0">125pcs/bln</p>
+                    <?php foreach ($data['top_3_highest_order'] as $key => $value): ?>
+                        <div class="card card-body me-4 d-flex justify-content-center border-black" style="width: 25vh;">
+                            <div class="text-center">
+                                <img src="/static/img/<?= $value['image'] ?>" alt="Top product image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #ddd;">
+                                <h6 class="mb-0"><?= $value['name'] ?></h6>
+                                <p class="mb-0"><?= $value['order_count'] ?>pcs/bln</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card card-body me-4 d-flex justify-content-center border-black " style="width: 25vh;">
-                        <div class="text-center">
-                            <svg class="mb-2" width="90" height="90" viewBox="0 0 90 90" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="45" cy="45" r="44.5" fill="#A7977F" fill-opacity="0.51" stroke="black" />
-                            </svg>
-
-                            <h6 class="mb-0">Bordir Logo</h6>
-                            <p class="mb-0">275pcs/bln</p>
-                        </div>
-                    </div>
-                    <div class="card card-body d-flex justify-content-center border-black" style="width: 25vh;">
-                        <div class="text-center">
-                            <svg class="mb-2" width="90" height="90" viewBox="0 0 90 90" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="45" cy="45" r="44.5" fill="#A7977F" fill-opacity="0.51" stroke="black" />
-                            </svg>
-
-                            <h6 class="mb-0">Bordir Baju</h6>
-                            <p class="mb-0">55pcs/bln</p>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
 
             </section>
@@ -60,13 +36,13 @@
                     <div class="w-50 me-3">
                         <h2>Jumlah Pesanan</h2>
                         <div class="card card-body w-100 rounded-0 border-black text-center" style="height: 20vh">
-                            <H1 style="color: #A7977F; font-size: 10vh">455</H1>
+                            <H1 style="color: #A7977F; font-size: 10vh"><?= $data['total_order'] ?></H1>
                         </div>
                     </div>
                     <div class="w-50 ms-3">
                         <h2>Jumlah Pengunjung</h2>
                         <div class="card card-body w-100 rounded-0 border-black text-center" style="height: 20vh">
-                            <H1 style="color: #A7977F; font-size: 10vh">900</H1>
+                            <H1 style="color: #A7977F; font-size: 10vh">34</H1>
                         </div>
                     </div>
                 </div>
