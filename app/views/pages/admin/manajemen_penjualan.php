@@ -13,8 +13,8 @@
     <?= Sidebar() ?>
     <div class="w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
-        <main class="px-5" style="min-height: 100vh; margin-top: 10vh;">
-            <h2 class="pt-5">Manajemen Penjualan</h2>
+        <main class="px-5 pb-5" style="min-height: 100vh; margin-top: 10vh;">
+            <h2>Manajemen Penjualan</h2>
             <h3>Statistik penjualan satu bulan terakhir</h3>
             <div class="d-flex" style="height: 200px;">
                 <div class="w-50 h-100 me-2 border position-relative" style="background-color: white;">

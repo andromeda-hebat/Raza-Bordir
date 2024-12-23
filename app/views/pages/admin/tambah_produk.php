@@ -14,7 +14,7 @@
     <div class="w-100" style="margin-left: 35vh;">
         <?= Topbar() ?>
         <main class="px-5" style="height: 100vh; margin-top:10vh;">
-            <h1>Tambah produk</h1>
+            <h2>Tambah produk</h2>
             <form action="/katalog-produk/tambah" method="post" enctype="multipart/form-data">
                 <label for="nama-produk">Nama produk</label><br>
                 <input type="text" name="nama-produk" id="nama-produk"><br>
