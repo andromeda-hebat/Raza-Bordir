@@ -15,7 +15,7 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showProduct(): void
+    public function viewProduct(): void
     {
         $this->view("templates/header", [
             'title' => "Raza Bordir"
@@ -24,7 +24,7 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showOrderInstructions(): void
+    public function viewOrderInstructions(): void
     {
         $this->view("templates/header", [
             'title' => "Raza Bordir"
@@ -33,7 +33,7 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function clientOrder(): void
+    public function viewCustomerOrder(): void
     {
         $this->view("templates/header", [
             'title' => "Raza Bordir"
@@ -42,7 +42,7 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showDetailProduct(): void
+    public function viewDetailProduct(): void
     {
         $this->view("templates/header", [
             'title' => "Raza Bordir"
@@ -51,7 +51,7 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showOrderForm(): void
+    public function viewOrderForm(): void
     {
         $this->view("templates/header", [
             'title' => "Raza Bordir"
@@ -69,7 +69,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function showAboutUs(): void
+    public function viewAboutUs(): void
     {
         $this->view("templates/header", [
             'title' => "Tentang kami"
@@ -78,7 +78,7 @@ class CustomerController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showContact(): void
+    public function viewContact(): void
     {
         $this->view("templates/header", [
             'title' => "Kontak"

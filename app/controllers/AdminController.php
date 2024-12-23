@@ -6,7 +6,7 @@ use App\Core\Controller;
 
 class AdminController extends Controller
 {
-    public function showDashboard(): void
+    public function viewDashboard(): void
     {
         $this->view("templates/header", [
             'title'=>"Dashboard"
@@ -15,7 +15,7 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showKelolaPesananPage(): void
+    public function viewKelolaPesananPage(): void
     {
         $this->view("templates/header", [
             'title'=>"Kelola Pesanan"
@@ -24,7 +24,7 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showKelolaKatalogProduk(): void
+    public function viewKelolaKatalogProduk(): void
     {
         $this->view("templates/header", [
             'title'=>"Kelola Katalog Produk"
@@ -33,7 +33,7 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showUlasan(): void
+    public function viewUlasan(): void
     {
         $this->view("templates/header", [
             'title'=>"Ulasan"
@@ -42,7 +42,7 @@ class AdminController extends Controller
         $this->view("templates/footer");
     }
 
-    public function showTambahProduk(): void
+    public function viewTambahProduk(): void
     {
         $this->view("templates/header", [
             'title'=>"Tambah Produk"
