@@ -124,7 +124,6 @@
                 <div>
                     <p>Drag & drop gambar anda atau klik ini untuk memilih gambar</p>
                 </div>
-                <input type="file" id="file-input" class="d-none" accept="image/*">
             </div>
 
             <div class="image-preview" id="image-preview">
@@ -133,10 +132,11 @@
             </div>
         </div>
 
-        <p class="text-center my-3">atau</p>
+        <br><br><br>
 
         <textarea name="notes_request" id="notes-request"
-            placeholder="Berikan deskripsi rancangan desain yang akan dibuat" class="w-100" style="resize: none;"></textarea>
+            placeholder="Berikan deskripsi rancangan desain yang akan dibuat" class="w-100"
+            style="resize: none;"></textarea>
 
         <div class="position-absolute bottom-0 end-0">
             <button class="back-btn button">Kembali</button>
@@ -148,7 +148,7 @@
     <section id="full-form-input" class="min-vh-100 position-relative">
         <h2 class="mt-3">Lengkapi formulir berikut</h2>
 
-        <form id="full-form" action="/customer-order" method="post">
+        <dic id="main-form">
             <label for="input-name">Nama</label><br>
             <input type="text" name="name" id="input-name" class="w-100"><br>
             <label for="input-phone">Nomor HP</label><br>
@@ -156,7 +156,7 @@
             <label for="input-amount">Jumlah</label><br>
             <input type="number" name="amount" id="input-amount" class="w-100"><br>
             <label for="input-price">Perkiraan harga</label>
-            <input type="text" name="price" id="input-price" class="w-100" disabled value="Rp 30.000">
+            <input type="text" name="price" id="input-price" class="w-100" readonly value="Rp 30.000">
 
             <div class="card flex-row align-items-center border border-info text-primary mt-5"
                 style="background-color: rgba(116, 182, 222, 0.23) !important">
@@ -170,9 +170,9 @@
 
             <div class="position-absolute bottom-0 end-0">
                 <button class="back-btn button">Kembali</button>
-                <button type="submit" class="send-btn button">Kirim</button>
+                <button type="submit" id="submit-form-btn" class="send-btn button">Kirim</button>
             </div>
-        </form>
+        </dic>
     </section>
 </main>
 
@@ -191,14 +191,14 @@
         $('#media-selection').show();
 
         let currentProcess = 1;
-        let activeOption = null;
+        let selectedMedia = null;
         $('.product-option').on('click', function () {
-            if (activeOption != null) {
-                $(activeOption).css('border', 'none');
+            if (selectedMedia != null) {
+                $(selectedMedia).css('border', 'none');
             }
 
-            activeOption = this;
-            $('#selected-item').text($(activeOption).data('name'));
+            selectedMedia = this;
+            $('#selected-item').text($(selectedMedia).data('name'));
             $(this).css('border', '5px solid lightblue');
         });
 
@@ -222,13 +222,74 @@
             }
         });
 
-        $('#full-form').on('click', function (e) {
-            e.preventDefault();
+
+
+        // Design input section
+        $('#drop-area').on('click', function () {
+            const fileInput = $('<input type="file" accept="image/*" name="design" id="input-design" style="display:none;">');
+
+            fileInput.trigger('click');
+
+            $('#drop-area').append(fileInput);
+
+            fileInput.on('change', function () {
+                const files = fileInput[0].files;
+                if (files.length > 0) {
+                    handleFile(files[0]);
+                }
+            });
+            $
+        });
+
+        $('#drop-area').on('dragover', function (event) {
+            event.preventDefault();
+            $('#drop-area').css('background-color', '#f0f0f0');
+        });
+
+        $('#drop-area').on('dragleave', function () {
+            $('#drop-area').css('background-color', '');
+        });
+
+        $('#drop-area').on('drop', function (event) {
+            event.preventDefault();
+            const files = event.originalEvent.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview-img').attr('src', event.target.result);
+                    $('#image-preview').show();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a valid image file');
+            }
+        }
+
+
+
+        // Full form section
+        $('#submit-form-btn').on('click', function () {
+            const formData = new FormData();
+            formData.append('media', $(selectedMedia).data('name'));
+            formData.append('design', $('#input-design')[0].files[0]);
+            formData.append('note', $('#notes-request').val());
+            formData.append('name', $('#input-name').val());
+            formData.append('phone', $('#input-phone').val());
+            formData.append('amount', $('#input-amount').val());
+            formData.append('price', $('#input-price').val());
 
             $.ajax({
-                url: $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: $(this).serialize(),
+                url: '/pesan',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     alert('Sukses!')
                 },
@@ -238,54 +299,4 @@
             });
         });
     });
-</script>
-
-<script>
-    const dropArea = document.getElementById('drop-area');
-    const fileInput = document.getElementById('file-input');
-    const imagePreview = document.getElementById('image-preview');
-    const previewImg = document.getElementById('preview-img');
-
-    // Show file input dialog when drop area is clicked
-    dropArea.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    // Handle drag and drop
-    dropArea.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        dropArea.style.backgroundColor = '#f0f0f0';
-    });
-
-    dropArea.addEventListener('dragleave', () => {
-        dropArea.style.backgroundColor = '';
-    });
-
-    dropArea.addEventListener('drop', (event) => {
-        event.preventDefault();
-        const files = event.dataTransfer.files;
-        handleFile(files[0]);
-    });
-
-    // Handle file input change
-    fileInput.addEventListener('change', () => {
-        const files = fileInput.files;
-        if (files.length > 0) {
-            handleFile(files[0]);
-        }
-    });
-
-    // Handle the file and display preview
-    function handleFile(file) {
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                previewImg.src = event.target.result;
-                imagePreview.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        } else {
-            alert('Please select a valid image file');
-        }
-    }
 </script>

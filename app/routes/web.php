@@ -6,10 +6,12 @@ use App\Core\Router;
 use App\Controllers\{CustomerController, AuthController, AdminController};
 
 
+// Customer
 Router::add('GET', '/', CustomerController::class, 'index');
 Router::add('GET', '/produk', CustomerController::class, 'viewProduct');
 Router::add('GET', '/produk/detail/([0-9a-zA-Z\-]+)', CustomerController::class, 'viewDetailProduct');
 Router::add('GET', '/pesan', CustomerController::class, 'viewCustomerOrder');
+Router::add('POST', '/pesan', CustomerController::class, 'processCustomerOrder');
 Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'viewOrderInstructions');
 Router::add('GET', '/formulir-pemesanan', CustomerController::class, 'viewOrderForm');
 Router::add('POST', '/customer-order', CustomerController::class, '');
