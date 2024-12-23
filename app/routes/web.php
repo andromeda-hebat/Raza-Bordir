@@ -28,8 +28,7 @@ Router::add('GET', '/produk/detail/([0-9a-zA-Z\-]+)', CustomerController::class,
 Router::add('GET', '/pesan', OrderController::class, 'viewCustomerOrder');
 Router::add('POST', '/pesan', OrderController::class, 'processCustomerOrder');
 Router::add('GET', '/cek-pesanan', OrderController::class, 'viewCheckOrder');
-Router::add('GET', '/cek-pesanan-by-username', OrderController::class, 'checkOrderByUsername');
-Router::add('GET', '/cek-pesanan-by-order-id', OrderController::class, 'checkOrderByOrderID');
+Router::add('GET', '/cek-pesanan-process', OrderController::class, 'processCheckOrder');
 Router::add('GET', '/panduan-pemesanan', OrderController::class, 'viewOrderInstructions');
 
 

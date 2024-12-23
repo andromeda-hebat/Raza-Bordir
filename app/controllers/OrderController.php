@@ -17,7 +17,7 @@ class OrderController extends Controller
         $this->view("pages/customer/pesan");
         $this->view("templates/footer");
     }
-    
+
     public function viewOrderInstructions(): void
     {
         $this->view("templates/header", [
@@ -71,14 +71,38 @@ class OrderController extends Controller
         ]);
     }
 
-    public function checkOrderByUsername(): void
-    {
-
-    }
-
-    public function checkOrderByOrderID(): void
-    {
-
-    }
     
+    public function viewCheckOrder(): void
+    {
+        $this->view("templates/header", [
+            'title' => "Raza Bordir"
+        ]);
+        $this->view("pages/customer/cek_pesanan");
+        $this->view("templates/footer");
+    }
+
+    public function processCheckOrder(): void
+    {
+        if (!isset($_GET['data']) || !isset($_GET['search_type'])) {
+            $this->sendWarningJSON(400, "Data is not complete");
+            exit;
+        }
+
+        $result = OrderRepository::checkOrderStatus($_GET['data'], $_GET['search_type']);
+
+        if ($result == false) {
+            http_response_code(404);
+            echo json_encode([
+                'status' => 'failed',
+                'data' => 'nothing'
+            ]);
+            exit;
+        }
+
+        http_response_code(200);
+        echo json_encode([
+            'status' => 'failed',
+            'data' => $result
+        ]);
+    }
 }

@@ -23,13 +23,4 @@ class CustomerController extends Controller
         $this->view("pages/customer/detail_produk");
         $this->view("templates/footer");
     }
-
-    public function viewCheckOrder(): void
-    {
-        $this->view("templates/header", [
-            'title' => "Raza Bordir"
-        ]);
-        $this->view("pages/customer/cek_pesanan");
-        $this->view("templates/footer");
-    }
 }
