@@ -10,7 +10,7 @@
 <?php ////////////////////// ?>
 
 <?= Navbar() ?>
-<main class="mt-5 p-3 pb-5">
+<main class="pt-5 p-3 pb-5">
     <section id="media-selection" class="min-vh-100">
         <div class="card flex-row align-items-center border border-info text-primary"
             style="background-color: rgba(116, 182, 222, 0.23) !important">
@@ -153,6 +153,8 @@
             <input type="text" name="name" id="input-name" class="w-100"><br>
             <label for="input-phone">Nomor HP</label><br>
             <input type="tel" name="phone" id="input-phone" class="w-100"><br>
+            <label for="input-phone">Alamat</label><br>
+            <input type="text" name="address" id="input-address" class="w-100"><br>
             <label for="input-amount">Jumlah</label><br>
             <input type="number" name="amount" id="input-amount" class="w-100"><br>
             <label for="input-price">Perkiraan harga</label>
@@ -281,6 +283,7 @@
             formData.append('note', $('#notes-request').val());
             formData.append('name', $('#input-name').val());
             formData.append('phone', $('#input-phone').val());
+            formData.append('address', $('#input-address').val());
             formData.append('amount', $('#input-amount').val());
             formData.append('price', $('#input-price').val());
 
