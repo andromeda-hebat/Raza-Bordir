@@ -10,4 +10,6 @@ $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 session_start();
+
+Router::initialize();
 Router::run();
