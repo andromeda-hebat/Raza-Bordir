@@ -1,12 +1,13 @@
 <?php
 
 use App\Core\Router;
-use App\Controllers\{GeneralController, CustomerController, AuthController, AdminController};
+use App\Controllers\{GeneralController, CustomerController, AuthController, AdminController, OrderController};
 
 
 // General
 Router::add('GET', '/', GeneralController::class, 'index');
-
+Router::add('GET', '/tentang', CustomerController::class, 'viewAboutUs');
+Router::add('GET', '/kontak', CustomerController::class, 'viewContact');
 
 // Auth
 Router::add('GET', '/login', AuthController::class, 'viewLoginPage');
@@ -17,11 +18,16 @@ Router::add('POST', '/logout', AuthController::class,'logout');
 // Customer
 Router::add('GET', '/produk', CustomerController::class, 'viewProduct');
 Router::add('GET', '/produk/detail/([0-9a-zA-Z\-]+)', CustomerController::class, 'viewDetailProduct');
+
+
+
+// Order
 Router::add('GET', '/pesan', CustomerController::class, 'viewCustomerOrder');
 Router::add('POST', '/pesan', CustomerController::class, 'processCustomerOrder');
+Router::add('GET', '/cek-pesanan', OrderController::class, 'viewCheckOrder');
+Router::add('GET', '/cek-pesanan-by-username', OrderController::class, 'checkOrderByUsername');
+Router::add('GET', '/cek-pesanan-by-order-id', OrderController::class, 'checkOrderByOrderID');
 Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'viewOrderInstructions');
-Router::add('GET', '/tentang', CustomerController::class, 'viewAboutUs');
-Router::add('GET', '/kontak', CustomerController::class, 'viewContact');
 
 
 // Admin
