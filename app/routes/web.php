@@ -6,13 +6,16 @@ use App\Controllers\{GeneralController, CustomerController, AuthController, Admi
 
 // General
 Router::add('GET', '/', GeneralController::class, 'index');
-Router::add('GET', '/tentang', CustomerController::class, 'viewAboutUs');
-Router::add('GET', '/kontak', CustomerController::class, 'viewContact');
+Router::add('GET', '/tentang', GeneralController::class, 'viewAboutUs');
+Router::add('GET', '/kontak', GeneralController::class, 'viewContact');
+
+
 
 // Auth
 Router::add('GET', '/login', AuthController::class, 'viewLoginPage');
 Router::add('POST', '/login', AuthController::class, 'processLogin');
 Router::add('POST', '/logout', AuthController::class,'logout');
+
 
 
 // Customer
@@ -22,12 +25,12 @@ Router::add('GET', '/produk/detail/([0-9a-zA-Z\-]+)', CustomerController::class,
 
 
 // Order
-Router::add('GET', '/pesan', CustomerController::class, 'viewCustomerOrder');
-Router::add('POST', '/pesan', CustomerController::class, 'processCustomerOrder');
+Router::add('GET', '/pesan', OrderController::class, 'viewCustomerOrder');
+Router::add('POST', '/pesan', OrderController::class, 'processCustomerOrder');
 Router::add('GET', '/cek-pesanan', OrderController::class, 'viewCheckOrder');
 Router::add('GET', '/cek-pesanan-by-username', OrderController::class, 'checkOrderByUsername');
 Router::add('GET', '/cek-pesanan-by-order-id', OrderController::class, 'checkOrderByOrderID');
-Router::add('GET', '/panduan-pemesanan', CustomerController::class, 'viewOrderInstructions');
+Router::add('GET', '/panduan-pemesanan', OrderController::class, 'viewOrderInstructions');
 
 
 // Admin
