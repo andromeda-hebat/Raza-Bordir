@@ -1,16 +1,11 @@
-<?php
-
-require_once __DIR__ . '/../bs_modal/ask_logout_modal.php';
+<?php require_once __DIR__ . '/../bs_modal/ask_logout_modal.php'; ?>
 
 
-function Sidebar(): string
-{
-    $ask_logout_modal = AskLogutModal();
-    return <<<HTML
+
+<?php function Sidebar(): void { ?>
     <div class="d-flex flex-column align-items-center border-end justify-content-center position-fixed"
     style="background-color: #F7F3EA; width: 35vh; height: 100vh; padding-top: 20px;">
 
-        <!-- Tautan Navigasi -->
         <nav class="nav w-100 d-flex justify-content-center text-start">
             <h2 style="font-family: 'Italianno', serif;">
                 Raza Bordir
@@ -32,7 +27,6 @@ function Sidebar(): string
             </a>
         </nav>
 
-        <!-- Tombol Keluar -->
             <div class="mt-auto w-100 mb-4 d-flex justify-content-center">
                 <button type="button" class="sidebar-nav nav-link w-100 ps-5 p-3 d-flex text-start" data-bs-toggle="modal"
                     data-bs-target="#modalConfirmationLogout">
@@ -48,6 +42,5 @@ function Sidebar(): string
     </div>
     
 
-    {$ask_logout_modal}
-    HTML;
-}
+    <?php AskLogutModal() ?>
+<?php } ?>

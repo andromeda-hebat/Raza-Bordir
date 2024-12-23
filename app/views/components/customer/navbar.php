@@ -1,8 +1,4 @@
-<?php
-
-function Navbar(): string
-{
-    return <<<HTML
+<?php function Navbar(): void { ?>
     <nav class=" navbar navbar-expand-lg d-flex align-items-between py-1 px-2 fixed-top" style="background-color: #EAE1D0CC">
     <div class="container-fluid">
         <div class="d-md-none">
@@ -58,5 +54,4 @@ function Navbar(): string
         </div>
     </div>
     </div>
-    HTML;
-}
+<?php } ?>
