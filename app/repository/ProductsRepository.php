@@ -42,6 +42,30 @@ class ProductsRepository
         }
     }
 
+    public static function editProduct(array $product): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                UPDATE Products
+                SET
+                    name = :name,
+                    description = :description,
+                    start_price = :start_price,
+                    image = :image
+                WHERE product_id = :product_id
+            SQL);
+            $stmt->bindValue(':name', $product['name'], \PDO::PARAM_STR);
+            $stmt->bindValue(':description', $product['description'], \PDO::PARAM_STR);
+            $stmt->bindValue(':start_price', $product['start_price'], \PDO::PARAM_STR);
+            $stmt->bindValue(':image', $product['image'], \PDO::PARAM_STR);
+            $stmt->bindValue(':product_id', $product['product_id'], \PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
     public static function deleteSingleProduct(int $product_id): void
     {
         try {

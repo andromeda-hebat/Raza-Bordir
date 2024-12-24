@@ -143,6 +143,53 @@ class AdminController extends Controller
         }
     }
 
+    public function processEditProduct(int $product_id): void
+    {
+        $raw_data = file_get_contents("php://input");
+
+        if (
+            !isset($_POST['product_id']) ||
+            !isset($_POST['name']) ||
+            !isset($_POST['description']) ||
+            !isset($_FILES['image']) ||
+            !isset($_POST['previous-image']) ||
+            !isset($_POST['price'])
+        ) {
+            $this->sendWarningJSON(400, "Incomplete data!");
+            exit;
+        }
+
+        $_FILES['image']['new_name'] = uniqid() . '--' . basename($_FILES['image']['name']);
+
+        $is_move_uploaded_file_success = FileManager::moveFile($_FILES, PRODUCT_FILE_PATH);
+
+        if (!$is_move_uploaded_file_success) {
+            $this->sendWarningJSON(500, "There is a warning while try to move uploaded file to the server!");
+            exit;
+        }
+
+        try {
+            ProductsRepository::editProduct([
+                'product_id' => $_POST['product_id'],
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'image' => $_FILES['image']['new_name'],
+                'start_price' => $_POST['price']
+            ]);
+
+            
+            echo json_encode([
+                "status" => "success",
+                "message" => "successfully to update product data"
+            ]);
+            exit;
+        } catch (\PDOException $e) {
+            $this->sendWarningJSON(500, "Database error!");
+            exit;
+        }
+
+    }
+
     public function viewManageSales(): void
     {
         $this->view("templates/header", [
