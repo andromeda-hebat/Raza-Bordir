@@ -1,5 +1,7 @@
 <?php require_once __DIR__ . '/../../components/admin/sidebar.php' ?>
 <?php require_once __DIR__ . '/../../components/admin/topbar.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_edit_item.php' ?>
 
 
 
@@ -21,7 +23,7 @@
             <table class="table mt-4">
                 <thead>
                     <tr>
-                        <th>ID produk</th>
+                        <th>Nomor</th>
                         <th>Nama Produk</th>
                         <th>Deskripsi Produk</th>
                         <th>Foto Produk</th>
@@ -31,17 +33,18 @@
                 </thead>
                 <tbody>
                     <?php foreach ($data['products'] as $key => $value): ?>
-                        <tr>
-                            <td><?= $value['product_id'] ?></td>
-                            <td><?= $value['name'] ?></td>
-                            <td><?= $value['description'] ?></td>
-                            <td>
+                        <tr data-item-id="<?= $value['product_id'] ?>">
+                            <td><?= $key+1 ?></td>
+                            <td class="product-name"><?= $value['name'] ?></td>
+                            <td class="product-description"><?= $value['description'] ?></td>
+                            <td class="product-image">
                                 <img src="/static/img/<?= $value['image'] ?>" alt="Product image" style="height: 150px;">
                             </td>
-                            <td><?= $value['start_price'] ?></td>
+                            <td class="product-price"><?= $value['start_price'] ?></td>
                             <td>
-                                <button class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger">Hapus</button>
+                                <button type="button" id="edit-trigger-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                <button type="button" id="delete-trigger-btn" class="btn btn-danger" data-bs-toggle="modal" data-item-id="<?= $value['product_id'] ?>" data-item-image="<?= $value['image'] ?>"
+                                    data-bs-target="#deleteModal">Hapus</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -50,3 +53,14 @@
         </main>
     </div>
 </div>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php ConfirmEditItem("Perbarui data produk", "/katalog-produk/", "produk") ?>
+<?php ConfirmDeleteData("Hapus data produk", "/katalog-produk", "produk") ?>

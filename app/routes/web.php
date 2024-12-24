@@ -37,6 +37,9 @@ Router::add('GET', '/panduan-pemesanan', OrderController::class, 'viewOrderInstr
 Router::add('GET', '/dashboard', AdminController::class, 'viewDashboard');
 Router::add('GET', '/kelola-pesanan', AdminController::class, 'viewMangeOrders');
 Router::add('GET', '/katalog-produk', AdminController::class, 'viewManageProductCatalog');
-Router::add('GET', '/katalog-produk/tambah', AdminController::class, 'viewTambahProduk');
+Router::add('GET', '/katalog-produk/tambah', AdminController::class, 'viewAddProduct');
+Router::add('POST', '/katalog-produk/tambah', AdminController::class, 'processAddProduct');
+Router::add('POST', '/katalog-produk/([0-9]+)', AdminController::class, 'processEditProduct'); // NOTE: Change this temporary HTTP request method to PUT or PATCH
+Router::add('DELETE', '/katalog-produk', AdminController::class, 'processDeleteProduct');
 Router::add('GET', '/ulasan', AdminController::class, 'viewUlasan');
 Router::add('GET', '/penjualan', AdminController::class, 'viewManageSales');

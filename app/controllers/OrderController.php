@@ -61,7 +61,7 @@ class OrderController extends Controller
                 'amount' => $_POST['amount'],
                 'price' => $_POST['price'],
                 'product_id' => $_POST['product_id'],
-                'design' => $_FILES['design']['name'],
+                'design' => $_FILES['design']['new-name'],
                 'note' => $_POST['note'],
                 'order_date' => date('Y-m-d')
             ]);
