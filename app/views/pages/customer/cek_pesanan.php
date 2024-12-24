@@ -38,7 +38,6 @@
 <script>
     $(document).ready(() => {
         $('#btn-search').on('click', function () {
-            console.log('hayuuut');
             let searchType = '';
             if ($('#input-order-id').val().trim() !== "") {
                 searchType = 'order-id';
@@ -55,8 +54,24 @@
                         search_type: searchType
                     },
                     success: function (response) {
-                        alert('sukses!' + response)
-                        console.log(response)
+                        const parsedResponse = JSON.parse(response)
+
+                        $('#search-result-container').empty();
+                        
+                        parsedResponse.data.forEach((value, index) => {   
+                            $('#search-result-container').append(`
+                                <div class="card p-3 d-flex justify-content-end my-3">
+                                    <div>
+                                        <p class="fw-bold">ID Pemesanan: ${value.order_id}</p>
+                                        <p>Barang yang dipesan: ${value.product_name}</p>
+                                        <p>Tanggal pesan: ${value.order_date}</p>
+                                    </div>
+                                    <div>
+                                        <img src="/static/img/${value.product_image}" alt="Product image" style="max-width: 100px; max-height: 100px">
+                                    </div>
+                                </div>
+                            `);
+                        });
                     },
                     error: function (xhr, status, error) {
                         alert('error')

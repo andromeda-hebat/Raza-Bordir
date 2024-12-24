@@ -68,17 +68,28 @@ class OrderRepository
     public static function checkOrderStatus(string $input, string $search_type): bool|array
     {
         try {
-            if ($search_type == 'order_id') {
+            if ($search_type == 'order-id') {
                 $query = <<<SQL
                 SELECT 
-                    order_id, order_date, product_id, amount
-                FROM Orders
+                    o.order_id, 
+                    o.order_date, 
+                    o.amount,
+                    p.name AS product_name,
+                    p.image AS product_image
+                FROM Orders o
+                INNER JOIN Products p ON o.product_id = p.product_id
                 WHERE order_id = ?
                 SQL;
             } else {
                 $query = <<<SQL
-                SELECT order_id, order_date, product_id, amount
+                SELECT 
+                    o.order_id, 
+                    o.order_date, 
+                    o.amount,
+                    p.name AS product_name,
+                    p.image AS product_image
                 FROM Orders o
+                INNER JOIN Products p ON o.product_id = p.product_id
                 INNER JOIN Customers c ON c.customer_id = o.customer_id
                 WHERE c.username LIKE ?;
                 SQL;
