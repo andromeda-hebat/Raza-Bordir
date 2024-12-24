@@ -41,4 +41,19 @@ class ProductsRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function deleteSingleProduct(int $product_id): void
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+            DELETE FROM Products
+            WHERE product_id = ?
+            SQL);
+            $stmt->bindValue(1, $product_id, \PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }

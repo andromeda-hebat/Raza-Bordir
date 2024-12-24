@@ -1,5 +1,6 @@
 <?php require_once __DIR__ . '/../../components/admin/sidebar.php' ?>
 <?php require_once __DIR__ . '/../../components/admin/topbar.php' ?>
+<?php require_once __DIR__ . '/../../components/bs_modal/confirm_delete_data.php' ?>
 
 
 
@@ -41,7 +42,8 @@
                             <td><?= $value['start_price'] ?></td>
                             <td>
                                 <button class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger">Hapus</button>
+                                <button type="button" id="delete-trigger-btn" class="btn btn-danger" data-bs-toggle="modal" data-item-id="<?= $value['product_id'] ?>" data-item-image="<?= $value['image'] ?>"
+                                    data-bs-target="#deleteModal">Hapus</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -50,3 +52,13 @@
         </main>
     </div>
 </div>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php ConfirmDeleteData("Hapus data produk", "/katalog-produk", "produk") ?>

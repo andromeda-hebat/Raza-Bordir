@@ -39,5 +39,6 @@ Router::add('GET', '/kelola-pesanan', AdminController::class, 'viewMangeOrders')
 Router::add('GET', '/katalog-produk', AdminController::class, 'viewManageProductCatalog');
 Router::add('GET', '/katalog-produk/tambah', AdminController::class, 'viewAddProduct');
 Router::add('POST', '/katalog-produk/tambah', AdminController::class, 'processAddProduct');
+Router::add('DELETE', '/katalog-produk', AdminController::class, 'processDeleteProduct');
 Router::add('GET', '/ulasan', AdminController::class, 'viewUlasan');
 Router::add('GET', '/penjualan', AdminController::class, 'viewManageSales');

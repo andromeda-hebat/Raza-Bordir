@@ -124,6 +124,25 @@ class AdminController extends Controller
         ]);
     }
 
+    public function processDeleteProduct(): void
+    {
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (!isset($data['id']) || !isset($data['image'])) {
+            $this->sendWarningJSON(400, "Incomplete data!");
+            exit;
+        }
+
+        try {
+            ProductsRepository::deleteSingleProduct($data['id']);
+            unlink(PRODUCT_FILE_PATH . $data['image']);
+            $this->sendWarningJSON(200, "Successfully to delete product data");
+            exit;
+        } catch (\PDOException $e) {
+            $this->sendWarningJSON(500, "Database error!");
+        }
+    }
+
     public function viewManageSales(): void
     {
         $this->view("templates/header", [
