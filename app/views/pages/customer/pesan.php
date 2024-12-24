@@ -60,10 +60,10 @@
                     max-width: 100%;
                 }
             </style>
-            <?php for ($i = 1; $i < count($data['products']); $i+=2): ?>
+            <?php for ($i = 0; $i < (count($data['products']) - 1); $i+=2): ?>
                 <div class="row">
-                    <?= ProductCardV2($data['products'][$i-1]['name'], $data['products'][$i-1]['product_id'], '/static/img/' . $data['products'][$i-1]['image']) ?>
-                    <?= ProductCardV2($data['products'][$i]['name'], $data['products'][$i]['product_id'],  '/static/img/' . $data['products'][$i]['image']) ?>
+                    <?= ProductCardV2($data['products'][$i]['name'], $data['products'][$i]['product_id'], '/static/img/' . $data['products'][$i]['image']) ?>
+                    <?= ProductCardV2($data['products'][$i+1]['name'], $data['products'][$i+1]['product_id'],  '/static/img/' . $data['products'][$i+1]['image']) ?>
                 </div>
             <?php endfor; ?>
         </div>
