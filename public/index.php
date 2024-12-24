@@ -9,6 +9,8 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
+
+
 session_set_cookie_params([
     'httponly' => true,
     'samesite' => 'Strict',
@@ -16,6 +18,10 @@ session_set_cookie_params([
 ]);
 session_start();
 session_regenerate_id(true);
+
+
+// i10n
+$GLOBALS['date_time_formatter'] = new IntlDateFormatter('id_ID', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 
 Router::initialize();
 Router::run();

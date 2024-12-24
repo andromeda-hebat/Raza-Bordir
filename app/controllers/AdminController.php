@@ -210,10 +210,23 @@ class AdminController extends Controller
 
     public function viewManageSales(): void
     {
+        try {
+            $current_month_total_sales = OrderRepository::getMonthlySalesStatistics('current');
+            $prev_month_total_sales = OrderRepository::getMonthlySalesStatistics('prev');
+            $most_order_product = OrderRepository::getMonthlyProductOrderStatistics();
+        } catch (\PDOException $e) {
+            $this->sendWarningJSON(500, "Database error!");
+            exit;
+        }
+
         $this->view("templates/header", [
             'title'=>"Manajemen Penjualan"
         ]);
-        $this->view("pages/admin/manajemen_penjualan");
+        $this->view("pages/admin/manajemen_penjualan", [
+            'current_month_totaL_sales' => $current_month_total_sales,
+            'prev_month_total_sales' => $prev_month_total_sales,
+            'most_order_product' => $most_order_product
+        ]);
         $this->view("templates/admin_footer");
     }
 }
