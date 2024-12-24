@@ -1,0 +1,113 @@
+@startuml
+
+package App\Core {
+    class Controller {
+        - view(view: string, data: array): void
+        + sendPageMethodNotAllowed(): void
+        + sendPageNotFound(): void
+        + sendWarningJSON(response_code: int, message: string): void
+    }
+
+    class Database {
+        - static DB_SERVER: string
+        - static DB_NAME: string
+        - static DB_USER: string
+        - static DB_PASSWORD: string
+        - static conn: ?PDO
+        - static initialize(): void
+        - static getDBConnection(dsn: string): PDO
+        + static getConnection(is_with_db: bool, db_type: string): PDO
+    }
+
+    class Router {
+        - static routes: array
+        - static base_controller: Controller
+        - static initialize(): void
+        + static add(method: string, path: string, controller: string, function: string): void
+        + static run(): void
+    }
+
+    Controller "1" -- "1" Router : uses
+    Database "1" -- "1" Router : uses
+}
+
+package App\Repository {
+
+    class OrderRepository {
+        +static addNewOrder(data: array): void
+        +static checkOrderStatus(input: string, search_type: string): bool|array
+        +static getAllOrders(): array
+        +static getTotalOrder(): int
+        +static getTop3HighestOrder(): array
+    }
+
+    class ProductsRepository {
+        +static getAllProducts(): array
+        +static addNewProduct(product: array): void
+        +static editProduct(product: array): void
+        +static deleteSingleProduct(product_id: int): void
+    }
+
+    class ReviewRepository {
+        +static addNewReview(data: array): void
+        +static editReview(data: array): void
+        +static deleteSingleReview(data: array): void
+    }
+
+    class UserRepository {
+        +static getUserByUserIDAndPassword(user_id: string, password: string): bool|array
+    }
+}
+
+package "App\Controllers" {
+    class AdminController {
+        +viewDashboard()
+        +viewMangeOrders()
+        +viewManageProductCatalog()
+        +viewUlasan()
+        +viewAddProduct()
+        +processAddProduct()
+        +processDeleteProduct()
+        +processEditProduct(product_id)
+        +viewManageSales()
+    }
+
+    class AuthController {
+        +viewLoginPage()
+        +processLogin()
+        +logout()
+    }
+
+    class CustomerController {
+        +viewProduct()
+        +viewDetailProduct()
+    }
+
+    class GeneralController {
+        +index()
+        +viewAboutUs()
+        +viewContact()
+        +serveStaticImgFile(file_name)
+    }
+
+    class OrderController {
+        +viewCustomerOrder()
+        +viewOrderInstructions()
+        +processCustomerOrder()
+        +viewCheckOrder()
+        +processCheckOrder()
+    }
+}
+
+AdminController ..|> Controller
+AuthController ..|> Controller
+CustomerController ..|> Controller
+GeneralController ..|> Controller
+OrderController ..|> Controller
+
+App\Repository.OrderRepository -- App\Core.Database : "uses"
+App\Repository.ProductsRepository -- App\Core.Database : "uses"
+App\Repository.ReviewRepository -- App\Core.Database : "uses"
+App\Repository.UserRepository -- App\Core.Database : "uses"
+
+@enduml
