@@ -70,8 +70,8 @@ class ProductsRepository
     {
         try {
             $stmt = Database::getConnection()->prepare(<<<SQL
-            DELETE FROM Products
-            WHERE product_id = ?
+                DELETE FROM Products
+                WHERE product_id = ?
             SQL);
             $stmt->bindValue(1, $product_id, \PDO::PARAM_INT);
             $stmt->execute();

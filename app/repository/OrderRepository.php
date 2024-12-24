@@ -184,4 +184,46 @@ class OrderRepository
             throw new \PDOException($e->getMessage());
         }
     }
+
+    public static function getMonthlySalesStatistics(string $month): array
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                    SELECT
+                        COUNT(order_id) AS order_per_day
+                    FROM Orders
+                    WHERE (MONTH(GETDATE()) - ?) = MONTH(order_date)
+                    GROUP BY DAY(order_date)
+                SQL);
+            $stmt->bindValue(1, ($month == 'current') ? 0 : 1, \PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function getMonthlyProductOrderStatistics(): array
+    {
+        try {
+            return Database::getConnection()
+                ->query(<<<SQL
+                    SELECT TOP 5
+                        p.name,
+                        ISNULL(SUM(o.amount), 0) AS total_amount
+                    FROM Products p
+                    LEFT JOIN Orders o ON p.product_id = o.product_id
+                    WHERE 
+                        YEAR(o.order_date) = YEAR(GETDATE()) AND
+                        MONTH(o.order_date) = MONTH(GETDATE())
+                    GROUP BY p.product_id, p.name
+                    ORDER BY total_amount DESC
+                SQL)
+                ->fetchAll(\PDO::PARAM_STR);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
 }
