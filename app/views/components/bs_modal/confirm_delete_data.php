@@ -17,7 +17,7 @@
                 <button type="button"
                     style="background-color: var(--ivory-cream-color)"
                     data-bs-dismiss="modal">Batal</button>
-                <button id="btn-delete" type="button" class="btn btn-danger" data-target-item-id="" data-target-item-image="">Hapus</button>
+                <button id="btn-delete" type="button" class="btn btn-danger">Hapus</button>
             </div>
         </div>
     </div>
@@ -79,7 +79,8 @@
         });
 
         $('#deleteModal').on('hidden.bs.modal', function () {
-            $('#btn-delete').attr('data-target-id-delete', '');
+            targetId = null;
+            image = null;
         });
     });
 </script>
