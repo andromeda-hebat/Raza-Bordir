@@ -155,6 +155,32 @@ class OrderRepository
         }
     }
 
+    public static function getSingleOrderBySomeData(string $customer_name, string $phone, int $product_id, string $order_date): bool|int
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                    SELECT 
+                        o.order_id
+                    FROM Orders o
+                    INNER JOIN Customers c ON o.customer_id = c.customer_id
+                    WHERE 
+                        c.username = :customer_name AND
+                        c.phone = :phone AND
+                        o.product_id = :product_id AND
+                        o.order_date = :order_date
+                SQL);
+            $stmt->bindValue(':customer_name', $customer_name, \PDO::PARAM_STR);
+            $stmt->bindValue(':phone', $phone, \PDO::PARAM_STR);
+            $stmt->bindValue(':product_id', $product_id, \PDO::PARAM_INT);
+            $stmt->bindValue(':order_date', $order_date, \PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_ASSOC)['order_id'];
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
     public static function getTotalOrder(): int
     {
         try {
