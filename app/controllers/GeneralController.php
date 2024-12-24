@@ -48,4 +48,20 @@ class GeneralController extends Controller
             exit;
         }
     }
+
+    public function serveStaticDesignFile(string $file_name): void
+    {
+        $img_path = __DIR__ . '/../../storage/uploads/design_request/' . $file_name;
+
+        if (file_exists($img_path)) {
+            $mime_type = mime_content_type($img_path);
+            header('Content-Type: ' . $mime_type);
+            header('Content-Length: ' . filesize($img_path));
+
+            readfile($img_path);
+        } else {
+            $this->sendWarningJSON(404, "Image not found!");
+            exit;
+        }
+    }
 }

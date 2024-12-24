@@ -9,6 +9,7 @@ Router::add('GET', '/', GeneralController::class, 'index');
 Router::add('GET', '/tentang', GeneralController::class, 'viewAboutUs');
 Router::add('GET', '/kontak', GeneralController::class, 'viewContact');
 Router::add('GET', '/static/img/(.+)', GeneralController::class, 'serveStaticImgFile');
+Router::add('GET', '/static/img-design/(.+)', GeneralController::class, 'serveStaticDesignFile');
 
 
 
@@ -35,7 +36,8 @@ Router::add('GET', '/panduan-pemesanan', OrderController::class, 'viewOrderInstr
 
 // Admin
 Router::add('GET', '/dashboard', AdminController::class, 'viewDashboard');
-Router::add('GET', '/kelola-pesanan', AdminController::class, 'viewMangeOrders');
+Router::add('GET', '/kelola-pesanan', AdminController::class, 'viewManageOrders');
+Router::add('GET', '/kelola-pesanan/detail/([0-9]+)', AdminController::class, 'viewDetailOrder');
 Router::add('GET', '/katalog-produk', AdminController::class, 'viewManageProductCatalog');
 Router::add('GET', '/katalog-produk/tambah', AdminController::class, 'viewAddProduct');
 Router::add('POST', '/katalog-produk/tambah', AdminController::class, 'processAddProduct');
