@@ -90,7 +90,7 @@ class AdminController extends Controller
             'title'=>"Ulasan"
         ]);
         $this->view("pages/admin/ulasan");
-        $this->view("templates/footer");
+        $this->view("templates/admin_footer");
     }
 
     public function viewAddProduct(): void
@@ -99,7 +99,7 @@ class AdminController extends Controller
             'title'=>"Tambah Produk"
         ]);
         $this->view("pages/admin/tambah_produk");
-        $this->view("templates/footer");
+        $this->view("templates/admin_footer");
     }
 
     public function processAddProduct(): void
@@ -214,6 +214,6 @@ class AdminController extends Controller
             'title'=>"Manajemen Penjualan"
         ]);
         $this->view("pages/admin/manajemen_penjualan");
-        $this->view("templates/footer");
+        $this->view("templates/admin_footer");
     }
 }
