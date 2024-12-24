@@ -65,6 +65,8 @@
                     'note' => $_POST['note'],
                     'order_date' => date('Y-m-d')
                 ]);
+
+                $order_id = OrderRepository::getSingleOrderBySomeData($_POST['name'], $_POST['phone'], $_POST['product_id'], date('Y-m-d'));
             } catch (\PDOException $e) {
                 $this->sendWarningJSON(500, "Database error!");
                 unlink(__DIR__ . '/../../storage/uploads/design_request/' . $_FILES['design']['new_name']);
@@ -73,7 +75,8 @@
 
             http_response_code(200);
             echo json_encode([
-                'message'=> "success"
+                'message'=> "success",
+                'order_id' => $order_id
             ]);
         }
 

@@ -1,4 +1,5 @@
 <?php require_once __DIR__ . '/../../components/general/navbar.php' ?>
+<?php require_once __DIR__ . '/../../components/admin/pembayaran_modal.php' ?>
 
 
 
@@ -20,11 +21,24 @@
         <input type="text" name="order-id" id="input-username" class="form-control" placeholder="Nama anda">
         <button class="mt-3" id="btn-search">Cari</button>
         <hr>
+        <div id="customer-current-order">
+
+        </div>
         <div id="search-result-container">
             
         </div>
     </section>
 </main>
+
+
+
+
+
+<?php ////////////////////// ?>
+<?php //--BOOTSTRAP MODAL--/ ?>
+<?php ////////////////////// ?>
+
+<?php PembayaranModal() ?>
 
 
 
@@ -37,6 +51,44 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script>
     $(document).ready(() => {
+        const customerOrder = localStorage.getItem('customerOrder');
+        if (customerOrder != null) {
+            $.ajax({
+                url: '/cek-pesanan-process',
+                type: 'GET',
+                data: {
+                    data: JSON.parse(customerOrder).orderId,
+                    search_type: 'order-id'
+                },
+                success: function (response) {
+                    const parsedResponse = JSON.parse(response)
+                    
+                    parsedResponse.data.forEach((value, index) => {   
+                        $('#customer-current-order').append(`
+                            <div class="card p-3 d-flex justify-content-end my-3">
+                                <div>
+                                    <p class="fw-bold">ID Pemesanan: ${value.order_id}</p>
+                                    <p>Barang yang dipesan: ${value.product_name}</p>
+                                    <p>Tanggal pesan: ${value.order_date}</p>
+                                </div>
+                                <div>
+                                    <img src="/static/img/${value.product_image}" alt="Product image" style="max-width: 100px; max-height: 100px">
+                                </div>
+                                <div>
+                                    <p>Status: <span>Disetujui</span></p>
+                                    <p>Nominal yang harus dibayar <span class="fw-bold">Rp 78.000</span></p>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Bayar</button>
+                                </div>
+                            </div>
+                        `);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    alert('error')
+                }
+            });
+        }
+
         $('#btn-search').on('click', function () {
             let searchType = '';
             if ($('#input-order-id').val().trim() !== "") {
