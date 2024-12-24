@@ -22,7 +22,7 @@
             <table class="table mt-4">
                 <thead>
                     <tr>
-                        <th>ID produk</th>
+                        <th>Nomor</th>
                         <th>Nama Produk</th>
                         <th>Deskripsi Produk</th>
                         <th>Foto Produk</th>
@@ -33,7 +33,7 @@
                 <tbody>
                     <?php foreach ($data['products'] as $key => $value): ?>
                         <tr>
-                            <td><?= $value['product_id'] ?></td>
+                            <td><?= $key+1 ?></td>
                             <td><?= $value['name'] ?></td>
                             <td><?= $value['description'] ?></td>
                             <td>
