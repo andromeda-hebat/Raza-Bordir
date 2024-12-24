@@ -100,6 +100,7 @@ class OrderRepository
             return Database::getConnection()
                 ->query(<<<SQL
                     SELECT
+                        o.order_id,
                         c.username AS customer,
                         phone,
                         p.name AS product,
@@ -109,6 +110,34 @@ class OrderRepository
                     INNER JOIN Products p ON p.product_id = o.product_id
                 SQL)
                 ->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
+            throw new \PDOException($e->getMessage());
+        }
+    }
+
+    public static function getSingleOrder(int $order_id): bool|array
+    {
+        try {
+            $stmt = Database::getConnection()->prepare(<<<SQL
+                    SELECT 
+                        o.order_id,
+                        o.amount,
+                        o.total_price,
+                        o.order_date,
+                        o.notes,
+                        o.design,
+                        p.name AS product_name,
+                        c.username AS customer_name,
+                        c.phone AS customer_phone
+                    FROM Orders o
+                    INNER JOIN Customers c ON o.customer_id = c.customer_id
+                    INNER JOIN Products p ON p.product_id = o.product_id
+                    WHERE order_id = ?
+                SQL);
+            $stmt->bindValue(1, $order_id, \PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             error_log(ErrorLog::formattedErrorLog($e->getMessage()), 3, LOG_FILE_PATH);
             throw new \PDOException($e->getMessage());

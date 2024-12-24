@@ -42,7 +42,9 @@
                             <td><?= $value['product'] ?></td>
                             <td><?= $value['amount'] ?></td>
                             <td>
-                                <button>Rincian</button>
+                                <a href="/kelola-pesanan/detail/<?= $value['order_id'] ?>" class="btn btn-primary">
+                                    Detail
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

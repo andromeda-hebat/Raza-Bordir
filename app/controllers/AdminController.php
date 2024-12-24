@@ -29,7 +29,7 @@ class AdminController extends Controller
         $this->view("templates/admin_footer");
     }
 
-    public function viewMangeOrders(): void
+    public function viewManageOrders(): void
     {
         try {
             $orders = OrderRepository::getAllOrders();
@@ -44,7 +44,25 @@ class AdminController extends Controller
         $this->view("pages/admin/kelola_pesanan", [
             'orders' => $orders
         ]);
-        $this->view("templates/footer");
+        $this->view("templates/admin_footer");
+    }
+
+    public function viewDetailOrder(int $order_id): void
+    {
+        try {
+            $order = OrderRepository::getSingleOrder($order_id);
+        } catch (\PDOException   $e) {
+            $this->sendWarningJSON(500, "Database error!");
+            exit;
+        }
+
+        $this->view("templates/header", [
+            'title'=>"Kelola Pesanan"
+        ]);
+        $this->view("pages/admin/detail_pesanan", [
+            'order' => $order
+        ]);
+        $this->view("templates/admin_footer");
     }
 
     public function viewManageProductCatalog(): void
